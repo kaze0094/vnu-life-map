@@ -33,7 +33,7 @@ Reviewed the public OSM API extract at https://www.openstreetmap.org/api/0.6/map
 | XT-L04 · Tòa E3 - Đại học Công Nghệ | https://www.openstreetmap.org/node/12573506643 | See retained node and seed | See retained node and seed | Public source cross-check |
 | XT-L05 · C1T (library) | https://www.openstreetmap.org/way/605977394 | null | null | Library name/type found; point not verified |
 
-Reviewer: Codex, public-source review. The four nodes carry university names/types and geographic points within the Xuân Thủy cluster. `verified` is explicitly scoped by `method: public_source`: it confirms consistency with the cited public geographic source on the review date, not a field visit, entrance survey, current availability, public access entitlement, institutional endorsement, or accuracy guarantee. Operational status stays null. No capacities, hours, or occupancy counts were added. Recheck against institutional evidence and field survey before navigation-sensitive use.
+Reviewer: Codex, public-source review. The four nodes carry university names/types and geographic points within the Xuân Thủy cluster. `source_verified` is explicitly scoped by `method: public_source`: it confirms consistency with the cited public geographic source on the review date, not a field visit, entrance survey, current availability, public access entitlement, institutional endorsement, or accuracy guarantee. Operational status stays null. No capacities, hours, or occupancy counts were added. Recheck against institutional evidence and field survey before navigation-sensitive use.
 
 Nominatim also returned the UET node consistently, but it is the same underlying OSM dataset, not a second independent authority. The official UET website request returned HTTP 403 during this review, and Overpass endpoints were unavailable; neither was treated as affirmative evidence. No coordinates were derived from building outlines. Library C1T remains unplaced rather than using an inferred centroid.
 
@@ -44,3 +44,12 @@ SIM-P01 (10/10), SIM-P02 (8/10), SIM-P03 (4/20) are deliberately fictional fixtu
 ### Candidate review records
 
 Each candidate has an individual worksheet under `parking-verification/`. Proposed name, entrance coordinates, evidence and reviewer are unconfirmed. Source-checked campus points above are independent records and do not identify any candidate pin.
+
+
+## Sprint 1.2 verification semantics
+
+The four public node coordinates, source URLs and 2026-11-11 source-check dates are preserved, not re-surveyed. Their status is now `source_verified` (previously generic `verified` with a public-source method). `field_verified` is a distinct status reserved for documented field review; no current seed has that status. `verifiedAt` is the dated check associated with the status, not evidence of fresh operations. UI labels distinguish source check from field survey, and public-source checks imply neither institutional authorization nor an entrance location.
+
+Parking now has a separate optional `entranceCoordinates` field. It is null on every parking seed, including fictional records. It must only be populated with independently documented entrance evidence and must never be inferred from the facility point or InMapz pins. XT-P01–XT-P11 remain pending, with capacity, occupancy, operational status and entrance coordinates null. No live observation or institutional approval was added in this sprint.
+
+Tile-provider settings concern basemap imagery only; they do not change location provenance or verify points. Always retain OSM attribution and any approved provider's required credit. No automatic failover to another provider is permitted when access is denied.

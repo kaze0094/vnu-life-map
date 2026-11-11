@@ -10,7 +10,7 @@
       "lng": 105.7824572
     },
     "verification": {
-      "status": "verified",
+      "status": "source_verified",
       "verifiedAt": "2026-11-11T00:00:00Z",
       "method": "public_source",
       "reviewer": "Codex · đối chiếu OSM API"
@@ -31,7 +31,7 @@
       "lng": 105.7828716
     },
     "verification": {
-      "status": "verified",
+      "status": "source_verified",
       "verifiedAt": "2026-11-11T00:00:00Z",
       "method": "public_source",
       "reviewer": "Codex · đối chiếu OSM API"
@@ -52,7 +52,7 @@
       "lng": 105.7816961
     },
     "verification": {
-      "status": "verified",
+      "status": "source_verified",
       "verifiedAt": "2026-11-11T00:00:00Z",
       "method": "public_source",
       "reviewer": "Codex · đối chiếu OSM API"
@@ -73,7 +73,7 @@
       "lng": 105.7826979
     },
     "verification": {
-      "status": "verified",
+      "status": "source_verified",
       "verifiedAt": "2026-11-11T00:00:00Z",
       "method": "public_source",
       "reviewer": "Codex · đối chiếu OSM API"

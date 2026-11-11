@@ -15,7 +15,8 @@
     "operationalStatus": null,
     "id": "DEMO-01",
     "name": "Bãi xe minh họa",
-    "description": "Bản ghi giả lập để thử tìm kiếm và bộ lọc. Không phải địa điểm thực tế."
+    "description": "Bản ghi giả lập để thử tìm kiếm và bộ lọc. Không phải địa điểm thực tế.",
+    "entranceCoordinates": null
   },
   {
     "campusId": "xuan-thuy",
@@ -69,7 +70,8 @@
     "operationalStatus": null,
     "id": "SIM-P01",
     "name": "Bãi Sao Hỏa (hư cấu)",
-    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU."
+    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU.",
+    "entranceCoordinates": null
   },
   {
     "campusId": "xuan-thuy",
@@ -87,7 +89,8 @@
     "operationalStatus": null,
     "id": "SIM-P02",
     "name": "Bãi Mây Tím (hư cấu)",
-    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU."
+    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU.",
+    "entranceCoordinates": null
   },
   {
     "campusId": "xuan-thuy",
@@ -105,6 +108,7 @@
     "operationalStatus": null,
     "id": "SIM-P03",
     "name": "Bãi Cầu Vồng (hư cấu)",
-    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU."
+    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU.",
+    "entranceCoordinates": null
   }
 ]

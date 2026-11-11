@@ -11,7 +11,9 @@ Apply individually to XT-P01 through XT-P11. An inventory ID does not imply a kn
 - [ ] Occupancy stays null unless a reliable, authorized observation exists. Record observation time and expiry before displaying availability.
 - [ ] Record reviewer identity, evidence reference, observation date and review decision. Do not put personal/sensitive evidence in public JSON.
 - [ ] Set verifiedAt only after review; update record timestamp separately.
-- [ ] Only a real, verified record with sourced coordinates may become a map point. Keep rejected and pending records off the map.
+- [ ] Only a real record with source_verified or field_verified status and sourced representative coordinates may become a map point. Source checks never confirm an entrance or institutional approval. Keep rejected and pending records off the map.
 - [ ] Recheck null/zero semantics, bounds, demo isolation, source attribution and mobile keyboard access.
 
 Sprint 1 has no editing or review backend. Do not mark records verified just to populate the map. Future sprints should store evidence and field observations separately from public records and enforce approval with database permissions.
+
+Sprint 1.2: Keep `Parking.entranceCoordinates` null until separate entrance evidence is reviewed. Never copy a representative point into the entrance field. `source_verified` records only a public-source cross-check; `field_verified` requires documented survey evidence.

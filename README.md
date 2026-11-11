@@ -1,4 +1,4 @@
-# VNU LIFE MAP — Sprint 1.1
+# VNU LIFE MAP — Sprint 1.2
 
 Mobile-first Vietnamese campus discovery application, built with Next.js App Router, TypeScript, Tailwind CSS 4, React Leaflet and OpenStreetMap. Initial area: Xuân Thủy, Hanoi. Hòa Lạc is disabled as coming soon.
 
@@ -52,3 +52,14 @@ On mobile, Bản đồ and Danh sách show separate views. Source links and veri
 Candidate worksheets: `docs/parking-verification/XT-P01.md` through `XT-P11.md`. No candidate has been renamed, assigned to an OSM facility, or geographically inferred.
 
 Validation report and screenshots: [docs/qa-sprint-1.1.md](docs/qa-sprint-1.1.md). Browser interaction checks passed, but this environment could not load OSM tiles (proxy certificate rejection; a separate tile probe returned access denied). The UI reports tile failures and the list remains available. Recheck basemap imagery on an authorized network before release.
+
+
+## Sprint 1.2 — preview readiness (not deployed)
+
+Verification statuses now explicitly distinguish `source_verified` and `field_verified`; none of the current real seeds is field-verified. Source dates and four coordinates are unchanged. `Parking.entranceCoordinates` is a separate optional field; null or absent means unknown and must never fall back to a representative coordinate.
+
+Tile requests have per-tile failure tracking, loading feedback, manual retry and a focusable link to the filtered list. A successful retry or unloading obsolete failed tiles clears the warning. No TLS bypass, proxy, service failover or automatic retry loop is used. Optional **public, nonsecret build-time** tile settings are documented in `.env.example` and [Vercel preview preparation](docs/deployment-vercel.md). Both provider URL and plain-text credit are required; OSM attribution is always retained. No provider has been connected and no preview deployed.
+
+`simulateEvent` returns `{lots, accepted}` and a `reason` on rejection. The UI reducer applies each event against current state and announces success only for accepted actions. Reset creates fresh copies of fictional seed lots. Tests cover full/empty/invalid IDs/real records/reset, tile configuration and recovery, and provenance/entrance invariants.
+
+See [Sprint 1.2 QA](docs/qa-sprint-1.2.md) and the [Chrome/Edge manual checklist](docs/visual-qa-checklist.md). Build/hosting compatibility is locally checked; hosted Vercel behavior still requires explicit deployment authorization and subsequent QA.
