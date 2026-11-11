@@ -1,0 +1,20 @@
+[
+  {
+    "id": "user-brief",
+    "name": "Thông tin từ yêu cầu dự án",
+    "url": null,
+    "description": "11 ghim đỏ trên ảnh InMapz do người dùng mô tả; chưa nhận ảnh, chưa xác minh danh tính hoặc vị trí. Không sao chép đồ họa."
+  },
+  {
+    "id": "osm-campus",
+    "name": "OpenStreetMap / Nominatim",
+    "url": "https://www.openstreetmap.org/relation/21663316",
+    "description": "Tâm hiển thị khuôn viên từ Nominatim, truy xuất 2026-11-11. Không xác nhận hoạt động của cơ sở."
+  },
+  {
+    "id": "demo",
+    "name": "Dữ liệu minh họa tự tạo",
+    "url": null,
+    "description": "Chỉ dùng thử giao diện, không đại diện cơ sở thực tế."
+  }
+]

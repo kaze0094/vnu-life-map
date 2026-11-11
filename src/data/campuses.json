@@ -1,0 +1,19 @@
+[
+  {
+    "id": "xuan-thuy",
+    "name": "Xuân Thủy",
+    "status": "active",
+    "viewCenter": [
+      21.0388103,
+      105.7818897
+    ],
+    "sourceId": "osm-campus"
+  },
+  {
+    "id": "hoa-lac",
+    "name": "Hòa Lạc",
+    "status": "coming_soon",
+    "viewCenter": null,
+    "sourceId": null
+  }
+]
