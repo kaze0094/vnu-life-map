@@ -38,3 +38,27 @@ Record browser/version, OS/device, viewport, date, network, tile provider, resul
 - Remaining blockers and reviewer:
 
 Deployment requires a separate explicit instruction even after this checklist passes.
+
+## Team user acceptance pass on the preview URL
+
+Run this pass separately on **Chrome desktop**, **Edge desktop**, **Chrome mobile** and **Edge mobile**. Include a real 390px-class phone where possible; record actual viewport. Give each row a tester, pass/fail result and screenshot or issue reference. Use the same deployment-specific URL/commit across devices.
+
+Before starting, record: URL, commit SHA, Vercel environment (**Preview**), browser/version, OS/device, viewport, network, timestamp, provider and access method. If protection blocks a teammate, resolve authorized tester access rather than changing application data or buying services.
+
+| ID | Student/tester action | Acceptance result |
+| --- | --- | --- |
+| UAT-01 | Open `/` and `/parking` from the shared HTTPS URL | Both load; Vietnamese UI fits desktop and mobile with no console/hydration error |
+| UAT-02 | Switch Bản đồ / Danh sách; search `cong nghe`, then reset | Navigation is clear, search/filter state is retained; reset restores results |
+| UAT-03 | On homepage, view real map; tap/click or keyboard-open a marker | Four source-backed markers only; readable name, URL/date and source-only badge; no entrance or authorization claim |
+| UAT-04 | Inspect basemap and attribution | Authorized imagery actually loads and attribution is visible; if unavailable, record failure separately rather than signing off map readiness |
+| UAT-05 | Block tile requests/offline, then select list fallback | Clear nonblocking status; filtered list still works; fallback moves focus to list |
+| UAT-06 | Restore network and retry basemap | Authorized successful tile loads clear warning; no endless retries or bypass needed |
+| UAT-07 | Search `XT-P01`, open detail, then directly reload its URL | Pending status and unknown capacity, occupancy and entrance remain; no fictional simulator or map point appears |
+| UAT-08 | Choose Học tập and search a nonexistent name | C1T stays list-only; no-results state has a working reset; zero results do not imply zero capacity |
+| UAT-09 | Switch to Minh họa, select each fictional lot | Fiction is obvious; full/crowded/available states and counts are consistent; no geographic map, route or real-time claim |
+| UAT-10 | Simulate exit from full, entry back to full, and exits until empty | Counts/free spaces/percentage agree; full entry and empty exit cannot succeed; alternatives are fictional lots with free spaces |
+| UAT-11 | Reset; leave/re-enter demo; reload `/parking/SIM-P02` | Reset restores seed state; mode changes/reload reset local counts; fictional detail preselects SIM-P02 |
+| UAT-12 | Open `/parking/not-a-location` and `/not-a-route` | Not-found UI; unknown routes are HTTP 404, without catch-all masking |
+| UAT-13 | Tab through controls, use visible focus, and test 200% desktop zoom | Labels remain clear, controls operable, no clipped essential content or horizontal overflow |
+
+Release decision: **pass / pass with documented basemap limitation / blocked**. Include tester names, outstanding issues and owner approval. Any live-data mixing, invented real-world values, missing provenance/fiction labels, or unexpected Production deployment classification blocks acceptance. A successful UAT pass does not authorize merging, promoting, deploying again, or connecting paid services.
