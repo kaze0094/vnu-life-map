@@ -16,5 +16,35 @@
     "name": "Dữ liệu minh họa tự tạo",
     "url": null,
     "description": "Chỉ dùng thử giao diện, không đại diện cơ sở thực tế."
+  },
+  {
+    "id": "osm-11609443061",
+    "name": "OpenStreetMap · Đại học Công nghệ",
+    "url": "https://www.openstreetmap.org/node/11609443061",
+    "description": "Tên và điểm địa lý đối chiếu với OSM API ngày 11/11/2026. Điểm đại diện cơ sở, không phải lối vào; chưa khảo sát thực địa."
+  },
+  {
+    "id": "osm-11609443059",
+    "name": "OpenStreetMap · Đại học Kinh tế",
+    "url": "https://www.openstreetmap.org/node/11609443059",
+    "description": "Tên và điểm địa lý đối chiếu với OSM API ngày 11/11/2026. Điểm đại diện cơ sở, không phải lối vào; chưa khảo sát thực địa."
+  },
+  {
+    "id": "osm-11609590538",
+    "name": "OpenStreetMap · Trường Đại học Y Dược",
+    "url": "https://www.openstreetmap.org/node/11609590538",
+    "description": "Tên và điểm địa lý đối chiếu với OSM API ngày 11/11/2026. Điểm đại diện cơ sở, không phải lối vào; chưa khảo sát thực địa."
+  },
+  {
+    "id": "osm-12573506643",
+    "name": "OpenStreetMap · Tòa E3 - Đại học Công Nghệ",
+    "url": "https://www.openstreetmap.org/node/12573506643",
+    "description": "Tên và điểm địa lý đối chiếu với OSM API ngày 11/11/2026. Điểm đại diện cơ sở, không phải lối vào; chưa khảo sát thực địa."
+  },
+  {
+    "id": "osm-library",
+    "name": "OpenStreetMap · C1T",
+    "url": "https://www.openstreetmap.org/way/605977394",
+    "description": "OSM ghi nhận thư viện C1T. Chưa xác minh một điểm đại diện hoặc lối vào, giữ tọa độ null."
   }
 ]

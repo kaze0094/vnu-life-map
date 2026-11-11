@@ -3,7 +3,7 @@ import {parking,demo,filterLocations,occupancyPercent,unknown,mappable,repositor
 describe('campus data integrity',()=>{
  it('keeps all eleven candidates unknown and off the map',()=>{expect(parking.map(p=>p.id)).toEqual(Array.from({length:11},(_,i)=>`XT-P${String(i+1).padStart(2,'0')}`));for(const p of parking){expect(p.coordinates).toBeNull();expect(p.capacity).toBeNull();expect(p.occupancy).toBeNull();expect(p.operationalStatus).toBeNull();expect(p.verification.status).toBe('pending_verification');}expect(mappable(parking)).toEqual([])});
  it('filters Vietnamese without accents and searches record ids',()=>{expect(filterLocations(parking,'xac minh','parking','real')).toHaveLength(11);expect(filterLocations(parking,'xt-p01','all','real')).toHaveLength(1);expect(filterLocations(parking,'','study','real')).toHaveLength(0)});
- it('isolates demo records even in a mixed collection',()=>{expect(filterLocations([...parking,...demo],'','all','real')).toHaveLength(11);expect(filterLocations([...parking,...demo],'','all','demo')).toHaveLength(3);expect(mappable(demo)).toHaveLength(0);expect(repository.findParking('DEMO-02')).toBeUndefined()});
+ it('isolates demo records even in a mixed collection',()=>{expect(filterLocations([...parking,...demo],'','all','real')).toHaveLength(11);expect(filterLocations([...parking,...demo],'','all','demo')).toHaveLength(demo.length);expect(mappable(demo)).toHaveLength(0);expect(repository.findParking('DEMO-02')).toBeUndefined()});
  it('distinguishes unknown from zero',()=>{expect(unknown(null)).toBe('Chưa có dữ liệu');expect(unknown(0)).toBe('0')});
 });
 describe('occupancy calculation',()=>{
