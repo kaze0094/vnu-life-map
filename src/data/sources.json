@@ -46,5 +46,29 @@
     "name": "OpenStreetMap · C1T",
     "url": "https://www.openstreetmap.org/way/605977394",
     "description": "OSM ghi nhận thư viện C1T. Chưa xác minh một điểm đại diện hoặc lối vào, giữ tọa độ null."
+  },
+  {
+    "id": "b2-field-report",
+    "name": "Nhóm dự án · Báo cáo khảo sát B2",
+    "url": null,
+    "description": "Nhóm dự án khảo sát ngày 11/11/2026, cung cấp kết quả trong yêu cầu phát hành ngày 12/11/2026. Không phải kết nối trực tiếp, thông báo vận hành hiện tại hoặc phê duyệt của ULIS."
+  },
+  {
+    "id": "b2-exam-guide",
+    "name": "Hướng dẫn thi ULIS trước đây · được nhóm dẫn lại",
+    "url": null,
+    "description": "Hướng dẫn thi ULIS trước đây, theo thông tin nhóm dự án cung cấp: khoảng 400 xe máy. Không sử dụng số liệu lịch sử này làm sức chứa hiện tại. Chưa có đường dẫn công khai kèm theo."
+  },
+  {
+    "id": "b2-schedule",
+    "name": "Lịch Homies B2 · chờ tài liệu và xác nhận hiệu lực",
+    "url": null,
+    "description": "Chưa có khung giờ cụ thể được cung cấp trong phiên làm việc; hiệu lực lịch chờ xác nhận. Không tự công bố lịch hoặc quyền tiếp cận cả ngày."
+  },
+  {
+    "id": "b2-release-scope",
+    "name": "Phạm vi phát hành B2 do nhóm dự án cung cấp",
+    "url": null,
+    "description": "Yêu cầu phát hành ngày 12/11/2026: Homies C3 và Đa năng còn chờ xác minh thực địa; không bổ sung tọa độ hoặc vận hành."
   }
 ]

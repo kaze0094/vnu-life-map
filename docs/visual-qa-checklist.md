@@ -1,3 +1,5 @@
+> **Current B2 competition release:** use the [final B2 UAT checklist](b2-competition-release.md#final-user-acceptance-checklist). Earlier Sprint 1.2 counts/field-verification descriptions below are historical. The current map has two team-surveyed B2 points and four retained source-only points.
+
 # Manual visual QA — Sprint 1.2 public preview gate
 
 Record browser/version, OS/device, viewport, date, network, tile provider, result and screenshot for every run. Complete on **Chrome and Edge desktop**, and **Chrome and Edge on a mobile device or 390px-wide emulator** (390 × 844 baseline). Headless Chromium is a useful automated check, not a substitute for branded-browser/device sign-off.

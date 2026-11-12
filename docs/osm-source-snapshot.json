@@ -10,8 +10,6 @@
       "version": "2",
       "changeset": "169845929",
       "timestamp": "2025-08-02T05:56:27Z",
-      "user": "Tewuzij",
-      "uid": "16194143",
       "lat": "21.0382738",
       "lon": "105.7824572",
       "tags": {
@@ -32,8 +30,6 @@
       "version": "2",
       "changeset": "169845929",
       "timestamp": "2025-08-02T05:56:27Z",
-      "user": "Tewuzij",
-      "uid": "16194143",
       "lat": "21.0379689",
       "lon": "105.7828716",
       "tags": {
@@ -54,8 +50,6 @@
       "version": "4",
       "changeset": "172435770",
       "timestamp": "2025-09-25T11:36:54Z",
-      "user": "Tewuzij",
-      "uid": "16194143",
       "lat": "21.0403110",
       "lon": "105.7816961",
       "tags": {
@@ -83,8 +77,6 @@
       "version": "2",
       "changeset": "169845929",
       "timestamp": "2025-08-02T05:56:27Z",
-      "user": "Tewuzij",
-      "uid": "16194143",
       "lat": "21.0382596",
       "lon": "105.7826979",
       "tags": {
@@ -95,5 +87,6 @@
         "name": "Tòa E3 - Đại học Công Nghệ"
       }
     }
-  ]
+  ],
+  "privacyNote": "Contributor account identifiers removed; geographic/source/version evidence retained. Attribution: OpenStreetMap contributors."
 }

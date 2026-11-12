@@ -98,5 +98,37 @@
     "updatedAt": "2026-11-11T00:00:00Z",
     "mode": "real",
     "operationalStatus": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-12",
+    "sourceId": "b2-release-scope",
+    "mode": "real",
+    "operationalStatus": null,
+    "id": "ULIS-HOMIES-C3",
+    "name": "Homies C3 – ULIS",
+    "category": "study",
+    "description": "Chờ xác minh thực địa. Chưa xác nhận tọa độ, lịch hoạt động, điều kiện tiếp cận hoặc tiện ích.",
+    "coordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-12",
+    "sourceId": "b2-release-scope",
+    "mode": "real",
+    "operationalStatus": null,
+    "id": "ULIS-DA-NANG",
+    "name": "Đa năng – ULIS",
+    "category": "facility",
+    "description": "Chờ xác minh thực địa. Chưa xác nhận tọa độ, lịch hoạt động, điều kiện tiếp cận hoặc tiện ích.",
+    "coordinates": null
   }
 ]

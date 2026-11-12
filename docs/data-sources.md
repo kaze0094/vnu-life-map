@@ -53,3 +53,22 @@ The four public node coordinates, source URLs and 2026-11-11 source-check dates 
 Parking now has a separate optional `entranceCoordinates` field. It is null on every parking seed, including fictional records. It must only be populated with independently documented entrance evidence and must never be inferred from the facility point or InMapz pins. XT-P01–XT-P11 remain pending, with capacity, occupancy, operational status and entrance coordinates null. No live observation or institutional approval was added in this sprint.
 
 Tile-provider settings concern basemap imagery only; they do not change location provenance or verify points. Always retain OSM attribution and any approved provider's required credit. No automatic failover to another provider is permitted when access is denied.
+
+## Final B2 release — 12 November 2026
+
+The project team supplied the field facts and exact coordinate pairs in the competition release brief, and confirmed **11/11/2026** as the survey date. This is the evidence source; no independent field visit by the application or agent is claimed. `verifiedAt`/`details.observedAt` are `2026-11-11` (date only); `updatedAt`/`reportedAt` are `2026-11-12`. No time of day is invented.
+
+| Record | Geographic role | Coordinates | Verification scope |
+| --- | --- | --- | --- |
+| ULIS-HOMIES-B2 | Survey location point; not a confirmed entrance | 21.037472, 105.782583 | field_verified, team survey report |
+| ULIS-PARKING-B2 | Shared entrance/exit gate | 21.037722, 105.782389 | field_verified, team survey report |
+
+Homies has **98 chairs counted by the team**, unknown official maximum, reported free fee, ULIS student-card check by supervising staff, and unverified amenities. Staff/student/approved-group schedule arrays remain empty because exact times were not supplied; schedule validity is pending confirmation. No all-day public access is inferred.
+
+Parking stores approximate operational capacity (480), historical guide capacity (400), difference explanation (about 80 due to arrangement/vehicle sizes), and past observed range (about 480–500, full/extremely crowded) in **separate qualified fields**. Exact generic capacity, current occupancy, available count and real-time count remain null. These are never inputs to live available-space calculations. Fee is 5,000 VND/entry; card issue/return and camera station are descriptions from the report. Provider and live system access remain unknown/unavailable. No plate image or identifier is collected or included.
+
+The historical examination guide is attributed to the team's supplied information. No public URL was supplied; the app does not pretend to have fetched that document. The user instructed using the supplied facts without further verification. We do not manufacture a citation or infer schedule times from that instruction.
+
+Homies C3 and Đa năng are scope records only, pending with null coordinates/details. XT-P01–XT-P11 remain unchanged; **B2 parking has not been assigned to any inventory ID**. Original OSM names/coordinates/source-check dates remain intact and source-only. Public contributor account IDs were removed from the retained OSM snapshot; source/version/geographic evidence and OSM attribution remain.
+
+Earlier sections describe earlier sprint states. The final real map has six eligible points (two team-reported B2 points plus four OSM-source points), never fictional markers. Source-only points are not upgraded to field verification.

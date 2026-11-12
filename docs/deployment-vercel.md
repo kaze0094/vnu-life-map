@@ -121,3 +121,11 @@ Provide the deployment-specific URL, source commit, environment shown in Vercel,
 - Actual basemap access failed in this cloud environment during Sprint 1.2; it must be tested on the team's trusted network. A list/simulator preview can still be tested with a documented basemap failure, but must not be signed off as a working geographic map.
 - No field verification or institutional authorization is established. This does not require inventing data to enable a preview: retain all current source-only/pending labels, null states and fictional-data notices.
 - Branded Chrome/Edge desktop/mobile acceptance remains to be recorded against the actual deployment URL.
+
+## B2 competition release — current handoff
+
+The final release adds `/b2`, `/locations/ULIS-HOMIES-B2`, `/parking/ULIS-PARKING-B2` and generic real `/locations/[id]` details. Retest direct loads and 404s; the original route matrix above is historical.
+
+User supplied `https://vnu-life-2q8bgefqi-vnu-life-map.vercel.app` on 12/11/2026. Unauthenticated requests redirect to Vercel SSO, so this is not a no-login public Preview at the time of inspection. This is an access-protection issue, not evidence of application failure. No deployment environment or commit is inferred from the hostname. No protection bypass was attempted.
+
+The B2 request authorizes preparing an accessible public **Preview**, not Production. An owner must confirm the existing project, Preview classification and latest commit; disable Vercel Authentication for the intended Preview scope if permitted; save; and retest incognito/mobile without a Vercel session. No dashboard mutation is possible through the available tooling here. Do not buy a plan or modify Production access. See [B2 owner steps and UAT](b2-competition-release.md#vercel-preview--owner-actions).

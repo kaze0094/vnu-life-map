@@ -1,12 +1,12 @@
 import {describe,it,expect} from 'vitest';
-import {demo,parking,locations,sources,mappable,repository} from './data';
+import {demo,parking,locations,b2,sources,mappable,repository} from './data';
 import {simulateEvent,parkingState,availableCount,recommendAlternatives,resetSimulation} from './simulation';
 const lots=demo.filter(lot=>lot.id.startsWith('SIM-'));
 describe('Sprint 1.1 seeds',()=>{
  it('includes real non-parking locations with traceable sources and scoped verification',()=>{
   expect(locations.length).toBeGreaterThanOrEqual(3);
-  expect(repository.list('real')).toHaveLength(locations.length+parking.length);
-  for(const location of locations){expect(location.mode).toBe('real');expect(location.operationalStatus).toBeNull();expect(sources.find(s=>s.id===location.sourceId)?.url).toMatch(/^https:\/\/www.openstreetmap.org\//);if(location.verification.status==='source_verified'){expect(location.verification.verifiedAt).toMatch(/^2026-11-11/);expect(location.verification.method).toBe('public_source');expect(location.coordinates).not.toBeNull();}}
+  expect(repository.list('real')).toHaveLength(b2.length+locations.length+parking.length);
+  for(const location of locations){expect(location.mode).toBe('real');expect(location.operationalStatus).toBeNull();if(location.id.startsWith('XT-'))expect(sources.find(s=>s.id===location.sourceId)?.url).toMatch(/^https:\/\/www.openstreetmap.org\//);if(location.verification.status==='source_verified'){expect(location.verification.verifiedAt).toMatch(/^2026-11-11/);expect(location.verification.method).toBe('public_source');expect(location.coordinates).not.toBeNull();}}
   expect(mappable(locations)).toHaveLength(4);
   expect(locations.find(l=>l.coordinates===null)?.verification.status).toBe('pending_verification');
  });
