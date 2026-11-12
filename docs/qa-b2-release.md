@@ -63,3 +63,12 @@ Captured from the **local production build**, not the protected Vercel deploymen
 5. **Known unknowns:** official maximum capacity, real-time parking count/free spaces, parking provider and amenities remain unknown as requested. Historical guide has no supplied public link; attribution is to the team's report, not a fetched document.
 
 No Supabase, backend, AI API, real card/camera feed, payment system, automatic Production deployment or merge was added. [Competition script and limitations](b2-competition-release.md) explicitly distinguish the implemented fictional simulator from a future separately authorized integration.
+
+## Hosted deployment status after B2 push
+
+Vercel's GitHub commit status for application commit **8d6bd31** is **success**. The Vercel bot in PR #1 reports **Ready** and links:
+
+- Deployment dashboard: https://vercel.com/vnu-life-map/vnu-life-map/9M955Vxem6WxkAZLA5nL9q8Zjp1K
+- Branch Preview: https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app
+
+An unauthenticated request to the branch Preview returns **HTTP 302**, not B2 application content. The older user-supplied deployment also redirects to SSO. This confirms the existing Git integration created/reported a Ready deployment, but does not confirm no-login access or hosted runtime/map imagery. No manual duplicate deployment, promotion or Production operation was run. Owner protection settings remain the access blocker. Subsequent documentation-only commits may advance the branch alias; verify the latest commit before final UAT.

@@ -73,3 +73,7 @@ No Vercel CLI, authentication-protection mutation or Production deployment was p
 ## Validation and submission artifacts
 
 See [qa-b2-release.md](qa-b2-release.md) for commands, browser results, screenshots, changed-file groups and deployment blockers. Submission screenshots show the local production build unless expressly marked otherwise; they are not evidence that the protected Vercel URL has become public.
+
+### Latest observed Preview
+
+The Vercel bot reports **Ready** for B2 application commit `8d6bd31`: [branch Preview](https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app), [deployment details](https://vercel.com/vnu-life-map/vnu-life-map/9M955Vxem6WxkAZLA5nL9q8Zjp1K). The branch URL returns HTTP 302 without authentication. It is a deployment link, **not yet a verified public no-login submission link**. Fix Preview access using owner steps above and complete UAT; do not share authentication bypass tokens.
