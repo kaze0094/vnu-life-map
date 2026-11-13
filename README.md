@@ -80,7 +80,14 @@ The branch Preview returned HTTP 200 without login at the beginning of the 13/11
 The current homepage adds Chill Space to the existing 12 campus utilities (13 entries). `/chill`, `/chill/private` and `/chill/together` add a lazy-loaded procedural 3D room without rebuilding the campus application. Private focus progress/wishes stay on-device. Shared rooms use real Cloudflare Durable Object WebSockets, not localStorage or fake participants. Without a public endpoint Preview explicitly says **Chưa kết nối realtime**.
 
 - [Features, controls and competition script](docs/chill-space.md)
-- [Exact local and free-compatible public endpoint setup](docs/chill-realtime-setup.md)
+- [Dashboard-only activation: Cloudflare token → GitHub manual workflow → Vercel Preview](docs/chill-github-actions.md)
+- [Local development and realtime architecture](docs/chill-realtime-setup.md)
 - [Actual multiplayer QA, limitations, screenshots and UAT](docs/qa-chill-space.md)
 
 `npm run typecheck` checks both Next and Worker. `npm run realtime:check` performs a local deployment dry-run only; `npm run test:realtime` and `npm run test:chill-browser` require the running local services described in setup. No public Worker was deployed, no account registered, no main merge or Production deployment performed. Earlier handoff documents describe the earlier map-only release.
+
+### Manual Worker deployment from GitHub
+
+`.github/workflows/deploy-chill-realtime.yml` only accepts `workflow_dispatch`, the `sprint-1-campus-map` ref and explicit confirmation. It checks lint/types/tests/build/Worker dry-run before deploying, with repository Secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` scoped to the deployment step (and presence check). It has not been run. Public origin is the exact existing Preview alias; local dev overrides origins only in `realtime:dev`.
+
+**GitHub prerequisite:** the workflow must exist on the default branch to be manually dispatched. Default is currently `main`; a branch-only workflow cannot yet be run from the UI. The guide explains the owner-controlled temporary default-branch option and the Vercel Production-branch check. No default-branch change, main commit/merge, cloud deployment or workflow dispatch was performed by Codex.

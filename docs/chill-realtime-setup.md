@@ -21,15 +21,13 @@ npm run test:chill-browser
 
 Nếu Chromium đã cài: `CHILL_CHROMIUM_PATH=/usr/bin/chromium npm run test:chill-browser`. Các script chỉ cho phép mục tiêu local. Test browser cần cả Next dev có biến trên và Worker local đang chạy.
 
-## Công khai — các bước chủ dự án thực hiện
+## Công khai — GitHub Actions, không cần terminal cá nhân
 
-1. Dùng tài khoản Cloudflare của bạn, kiểm tra Workers Free và SQLite Durable Objects có sẵn trong hạn mức miễn phí. Không nâng cấp gói hay bật dịch vụ tính phí. Xem hạn mức hiện hành: https://developers.cloudflare.com/durable-objects/platform/pricing/ . Không có cam kết miễn phí vô hạn.
-2. Chạy `npx wrangler login` trên máy của bạn; xác thực trong trình duyệt. Không gửi token vào cuộc trò chuyện hoặc commit token. Chỉnh `realtime/wrangler.jsonc`: tên Worker duy nhất nếu cần, `ALLOWED_ORIGINS` thành danh sách origin chính xác, phân cách dấu phẩy. Ví dụ Preview nhánh hiện tại: `https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app`. Không thêm đường dẫn, không wildcard. Nếu dùng URL deployment bất biến khác, thêm chính xác origin đó.
-3. Tự chạy `npx wrangler deploy --config realtime/wrangler.jsonc`. Lệnh này triển khai **Worker riêng**, không Vercel Production. Binding/migration SQLite đã có trong config. Ghi lại origin trả về dạng `https://vnu-chill-realtime.<your-subdomain>.workers.dev`; kiểm tra `/health`. Không cần API key client.
-4. Trong Vercel project hiện có → Settings → Environment Variables, thêm **chỉ môi trường Preview**: `NEXT_PUBLIC_CHILL_REALTIME_URL=https://<worker>.<subdomain>.workers.dev`. Giá trị chỉ là origin công khai, không path/query/credentials; `https` hoặc `wss`. Không thêm secret dưới tiền tố NEXT_PUBLIC. Redeploy deployment của nhánh `sprint-1-campus-map` để bundle nhận giá trị mới. Không merge, promote Production hoặc tạo dự án mới. Framework Next.js, root repository, install `npm ci`, build `npm run build`, output mặc định, Node22.
-5. Mở Preview ở hai laptop, tạo phòng riêng, sao chép link mời và chạy A–G trong [QA](qa-chill-space.md). Kiểm tra Deployment Protection cho Preview theo chính sách nhóm để người thử không cần đăng nhập Vercel. Nếu chưa kết nối, kiểm tra origin chính xác, URL endpoint và redeploy sau thay env; không bỏ kiểm tra TLS.
+Dùng [hướng dẫn Dashboard bằng tiếng Việt](chill-github-actions.md): tạo token Workers Scripts Edit giới hạn đúng account, lưu hai GitHub Actions Secrets, xử lý yêu cầu default branch của GitHub, rồi tự kích hoạt **Deploy Chill realtime (manual)**. Workflow không chạy khi push/PR và chưa được kích hoạt bởi Codex.
 
-Các bước cloud trên **chưa được thực hiện**. Không cần cung cấp bí mật cho trợ lý. Endpoint http/ws loopback chỉ được chấp nhận ở development; build production từ chối URL đó.
+Cấu hình public đã giới hạn `ALLOWED_ORIGINS` đúng `https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app`. Script `npm run realtime:dev` chỉ override allowlist cho localhost trong môi trường local; không đưa localhost lên Worker public. Worker bật URL workers.dev, tắt version preview URLs. Không có token/Account ID trong mã nguồn.
+
+Sau deploy thủ công, đặt origin Worker vào `NEXT_PUBLIC_CHILL_REALTIME_URL` **chỉ Vercel Preview** và redeploy branch. Bước cloud chưa được thực hiện; không cần gửi bí mật cho trợ lý. URL http/ws loopback chỉ chấp nhận ở development, build production từ chối URL đó.
 
 ## Giới hạn và vận hành
 

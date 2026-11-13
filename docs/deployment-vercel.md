@@ -140,3 +140,5 @@ This release adds no route requiring a backend: booking DEMO is client-only and 
 ## Chill Space / optional realtime — 13 November
 
 The existing Next.js deployment remains compatible with Vercel. The realtime server runs separately on Cloudflare Durable Objects; Vercel does not host a persistent WebSocket server. No new variable is required to test private Chill Space. Study Together defaults to **Chưa kết nối realtime** until `NEXT_PUBLIC_CHILL_REALTIME_URL` is set in Preview and the branch redeployed. Follow [the exact activation steps](chill-realtime-setup.md); keep the Worker Origin allowlist matched to the URL used by testers. Do not promote Production or merge PR #1. A public endpoint has not been deployed by this change.
+
+For a GitHub/Codex-only setup (no personal terminal), follow [the Vietnamese manual Actions guide](chill-github-actions.md). The Worker allowlist is already the branch Preview origin. Do not enable Cloudflare Git push builds; the deploy workflow is manual-only. GitHub requires this workflow on its default branch before dispatch; see the documented owner decision instead of merging PR #1.

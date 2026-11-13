@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit && tsc --noEmit -p realtime/tsconfig.json",
     "test": "vitest run",
-    "realtime:dev": "wrangler dev --config realtime/wrangler.jsonc --port 8787 --ip 127.0.0.1",
+    "realtime:dev": "wrangler dev --config realtime/wrangler.jsonc --port 8787 --ip 127.0.0.1 --var ALLOWED_ORIGINS:http://localhost:3000,http://127.0.0.1:3000",
     "realtime:check": "wrangler deploy --dry-run --outdir work/worker-build --config realtime/wrangler.jsonc",
     "test:realtime": "node scripts/test-chill-realtime.mjs",
     "test:chill-browser": "node scripts/test-chill-browser.mjs"

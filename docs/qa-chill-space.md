@@ -49,3 +49,14 @@ Các ảnh Study Together dùng hai kết nối thật tới server local, khôn
 - [Ảnh production local chưa cấu hình endpoint,390px](screenshots/chill-space/preview-unconfigured-mobile.png).
 
 Kiểm thử tương tác map/tile trên thiết bị thật và endpoint cloud sau cấu hình vẫn là UAT chưa hoàn thành; các kết quả local không được dùng để đánh dấu những mục đó đã đạt.
+
+## Bổ sung: chuẩn bị deploy Worker bằng GitHub Actions — 13 November 2026
+
+- Review Worker: allowlist exact-origin, hash token server-side, seat authority/heartbeat cleanup vẫn giữ nguyên; không sửa logic realtime hoặc dữ liệu campus.
+- `.github/workflows/deploy-chill-realtime.yml`: chỉ `workflow_dispatch`, checkbox xác nhận mặc định tắt, khóa repository/branch, `contents: read`, checkout đúng SHA, action references pin SHA, token chỉ trong bước kiểm tra secrets và deploy. Không có push/PR deploy, merge, Vercel deploy hoặc nâng cấp gói.
+- `actionlint 1.7.12`: PASS cho cả workflow Validate hiện có và workflow mới (binary official release, checksum verified).
+- `npm run lint`, `npm run typecheck`, `npm test` (55/55), `npm run build`: PASS sau sửa cấu hình.
+- `npm run realtime:check`: PASS dry-run, SQLite DO binding/migration và origin Preview đúng; không gọi deploy cloud.
+- Actual local workerd với cấu hình public: exact Preview Origin upgrade101; localhost và origin khác403; health200. Script local dev override vẫn chạy10 smoke checks WebSocket thật PASS (4 người, giới hạn người5, ghế, clock, rate limit, cleanup, resume, close/expiry, origin).
+- **Chưa chạy workflow/deploy cloud**, chưa xác thực token hoặc account của chủ dự án; chưa đổi default branch. GitHub API xác nhận default branch hiện là `main`, trong khi workflow mới chỉ nằm trên nhánh sprint. Đây là prerequisite còn chặn dispatch; [hướng dẫn](chill-github-actions.md) giải thích phương án owner chủ động đổi default branch tạm, với Vercel Production Branch giữ `main`, hoặc dừng nếu không cho phép.
+- Sau owner deploy phải chạy lại A–G trên hai laptop/endpoint công khai; kết quả local không thay thế bước này.
