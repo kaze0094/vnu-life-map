@@ -1,3 +1,5 @@
+> **Superseded for the 13/11 Student-first release:** use [current handoff/UAT](final-student-release.md) and [current QA](qa-student-final.md). Older hours/UI/access observations below are historical.
+
 # VNU LIFE MAP — B2 competition handoff
 
 Deadline: **15 November 2026**. Branch: `sprint-1-campus-map`, PR #1. Continue this branch; do not merge or deploy Production without approval.

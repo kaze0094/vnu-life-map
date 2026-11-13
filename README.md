@@ -1,4 +1,4 @@
-# VNU LIFE MAP — B2 competition prototype
+# VNU LIFE MAP — Student-first B2 prototype
 
 Vietnamese, mobile-first campus map focused on **Homies B2 – ULIS** and **Nhà xe B2 – ULIS**, based on team-reported survey observations from **11 November 2026**. Deadline: **15 November 2026**.
 
@@ -39,7 +39,7 @@ No credentials or environment variables are required. Optional **public, nonsecr
 
 ## Evidence boundaries
 
-**98 chairs** is an observed count, not official maximum capacity. Homies access requires a ULIS student card checked by supervising staff; unrestricted all-day access is not claimed. Detailed schedule slots were not supplied, and schedule validity remains pending confirmation.
+**98 chairs** is an observed count, not official maximum capacity. Homies access requires a ULIS student card checked by supervising staff; unrestricted all-day access is not claimed. Detailed group/staff schedule slots were not supplied; current prototype hours are provided separately below.
 
 **Approximately 480 motorcycles** is team-reported operational capacity. **Approximately 400** is a separately attributed historical guide figure. **Approximately 480–500** is a past survey observation, not current occupancy. B2 parking `capacity`/`occupancy` stay null in generic live-count fields; qualified observations are modeled separately. No available count or current percentage is computed. Provider is unknown. Card/camera workflow descriptions do not imply integration.
 
@@ -55,12 +55,22 @@ The two B2 records use `field_verified` scoped to the team's survey report; the 
 
 No individual students/staff, license plate/card records, photos or sensitive credentials are included. The source snapshot retains geographic evidence without contributor account identifiers.
 
+## Student-first release — 13 November 2026
+
+Homepage is now a compact 12-utility grid followed immediately by the map. Only Homies and Nhà xe are active; coming-soon categories are disabled. Explicit Homies tags include B2, C3 and Đa năng; C1T remains separate. Compact popups/details expose actions first, with audit metadata behind an expandable section. Directions open an external map for verified real geographic points only; no route is fabricated.
+
+Homies prototype hours are **06:45–20:00**, supplied by the project owner on 13/11. Entry still requires a ULIS student card/staff check. Real availability stays null. Booking is **DEMO only**, with a separate three-seat fictional inventory per slot; it never changes the 98-chair observation or real occupancy. Choose a date, reserve one seat, cancel, check in/out, advance the demo clock for no-show/expiry, or reset. Duplicate active holds and full-slot requests are rejected. State exists only in one mounted page and is lost on reload; it is not a secure shared reservation service.
+
+- `src/lib/booking.ts`, `BookingDemo.tsx`: pure state machine and demo UI; no API/storage/identity/QR integration.
+- `src/components/LocationPanel.tsx`: compact real-location information and safe actions; parking never has a booking button.
+- `src/lib/student-experience.test.ts`, `booking.test.ts`: explicit Homies membership, directions/mode boundaries, time transitions, duplication/capacity/reset checks.
+
 ## Competition handoff
 
-- [B2 release, 2–3 minute Vietnamese demo script, limitations and final UAT](docs/b2-competition-release.md)
-- [Final B2 QA and submission screenshots](docs/qa-b2-release.md)
+- [Current feature summary, 2–3 minute script, UAT and Preview steps](docs/final-student-release.md)
+- [Future ULIS B2 pilot / occupancy architecture / roles / privacy / resource estimates](docs/ulis-b2-pilot-plan.md)
+- [Student-first QA and current desktop/mobile screenshots](docs/qa-student-final.md)
 - [Data provenance](docs/data-sources.md)
-- [Vercel Preview settings and first-deployment constraint](docs/deployment-vercel.md)
-- [General Chrome/Edge visual checklist](docs/visual-qa-checklist.md)
+- [Vercel settings and first-deployment constraint](docs/deployment-vercel.md)
 
-The user-supplied Vercel URL redirects to SSO for unauthenticated visitors; owner action is needed for no-login Preview access. No Production deploy or merge is authorized. Historical Sprint 1.1/1.2 QA documents record earlier seeds, not the final B2 marker counts.
+The branch Preview returned HTTP 200 without login at the beginning of the 13/11 validation session; verify its latest commit after push before submission. Historical 11–12/11 QA/UI/SSO observations remain archived and do not describe this release. No Production deploy, merge, paid service or backend is authorized in this sprint.

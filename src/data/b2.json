@@ -7,7 +7,7 @@
       "method": "field_survey",
       "reviewer": "Nhóm dự án · theo báo cáo khảo sát"
     },
-    "updatedAt": "2026-11-12",
+    "updatedAt": "2026-11-13",
     "sourceId": "b2-field-report",
     "mode": "real",
     "operationalStatus": null,
@@ -41,8 +41,18 @@
         "Điều hòa": null,
         "Nhà vệ sinh": null,
         "Tiếp cận cho người khuyết tật": null
-      }
-    }
+      },
+      "openingHours": {
+        "opens": "06:45",
+        "closes": "20:00",
+        "timezone": "Asia/Ho_Chi_Minh",
+        "scope": "prototype",
+        "sourceId": "owner-prototype-hours"
+      },
+      "realTimeOccupancy": null,
+      "availableSeats": null
+    },
+    "utility": "homies"
   },
   {
     "campusId": "xuan-thuy",

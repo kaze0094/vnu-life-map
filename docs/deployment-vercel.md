@@ -129,3 +129,10 @@ The final release adds `/b2`, `/locations/ULIS-HOMIES-B2`, `/parking/ULIS-PARKIN
 User supplied `https://vnu-life-2q8bgefqi-vnu-life-map.vercel.app` on 12/11/2026. Unauthenticated requests redirect to Vercel SSO, so this is not a no-login public Preview at the time of inspection. This is an access-protection issue, not evidence of application failure. No deployment environment or commit is inferred from the hostname. No protection bypass was attempted.
 
 The B2 request authorizes preparing an accessible public **Preview**, not Production. An owner must confirm the existing project, Preview classification and latest commit; disable Vercel Authentication for the intended Preview scope if permitted; save; and retest incognito/mobile without a Vercel session. No dashboard mutation is possible through the available tooling here. Do not buy a plan or modify Production access. See [B2 owner steps and UAT](b2-competition-release.md#vercel-preview--owner-actions).
+
+
+## Current Student-first validation — 13 November 2026
+
+At the start of this session the existing branch Preview https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app returned **HTTP 200**, with previous B2 content, to an unauthenticated request. The 12/11 SSO blocker is therefore historical for this URL at this check. Verify current behavior and commit after deploying the Student-first changes; do not assume every immutable deployment URL has the same protection scope.
+
+This release adds no route requiring a backend: booking DEMO is client-only and uses one page's memory. No env/storage/payment/student authentication setup is needed. Keep Next.js output/runtime defaults. Follow [current Preview steps/UAT](final-student-release.md) and [current QA](qa-student-final.md) rather than old four-marker or pre-booking checklists.

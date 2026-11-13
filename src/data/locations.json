@@ -113,7 +113,8 @@
     "name": "Homies C3 – ULIS",
     "category": "study",
     "description": "Chờ xác minh thực địa. Chưa xác nhận tọa độ, lịch hoạt động, điều kiện tiếp cận hoặc tiện ích.",
-    "coordinates": null
+    "coordinates": null,
+    "utility": "homies"
   },
   {
     "campusId": "xuan-thuy",
@@ -126,9 +127,10 @@
     "mode": "real",
     "operationalStatus": null,
     "id": "ULIS-DA-NANG",
-    "name": "Đa năng – ULIS",
-    "category": "facility",
+    "name": "Homies Đa năng – ULIS",
+    "category": "study",
     "description": "Chờ xác minh thực địa. Chưa xác nhận tọa độ, lịch hoạt động, điều kiện tiếp cận hoặc tiện ích.",
-    "coordinates": null
+    "coordinates": null,
+    "utility": "homies"
   }
 ]

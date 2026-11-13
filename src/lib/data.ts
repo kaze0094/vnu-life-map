@@ -23,3 +23,13 @@ export function mappable(items: Location[]) { return items.filter(item => item.m
 
 export const detailHref = (item: Location) => item.category==='parking'?`/parking/${item.id}`:`/locations/${item.id}`;
 export function isB2(item: Location): item is B2Place { return b2.some(place=>place.id===item.id); }
+
+export type UtilityFilter = 'all' | 'homies' | 'parking';
+export function filterUtilities(items: Location[], query: string, utility: UtilityFilter, mode: DataMode): Location[] {
+  return filterLocations(items,query,'all',mode).filter(item=>utility==='all'||(utility==='homies'?item.utility==='homies':item.category==='parking'));
+}
+// An external directions tool chooses the route/origin. We never fabricate one.
+export function directionsHref(item: Location): string | null {
+  if (!mappable([item]).length) return null;
+  return `https://www.google.com/maps/dir/?api=1&destination=${item.coordinates!.lat},${item.coordinates!.lng}&travelmode=walking`;
+}

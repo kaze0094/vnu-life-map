@@ -70,5 +70,11 @@
     "name": "Phạm vi phát hành B2 do nhóm dự án cung cấp",
     "url": null,
     "description": "Yêu cầu phát hành ngày 12/11/2026: Homies C3 và Đa năng còn chờ xác minh thực địa; không bổ sung tọa độ hoặc vận hành."
+  },
+  {
+    "id": "owner-prototype-hours",
+    "name": "Chủ dự án · Giờ dùng cho bản thử nghiệm",
+    "url": null,
+    "description": "Yêu cầu phát hành ngày 13/11/2026 quy định Homies B2 hoạt động 06:45–20:00 trong prototype; không đồng nghĩa lịch nhóm/sự kiện được phê duyệt hay quyền vào không cần thẻ."
   }
 ]

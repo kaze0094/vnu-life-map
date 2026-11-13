@@ -72,3 +72,12 @@ The historical examination guide is attributed to the team's supplied informatio
 Homies C3 and Đa năng are scope records only, pending with null coordinates/details. XT-P01–XT-P11 remain unchanged; **B2 parking has not been assigned to any inventory ID**. Original OSM names/coordinates/source-check dates remain intact and source-only. Public contributor account IDs were removed from the retained OSM snapshot; source/version/geographic evidence and OSM attribution remain.
 
 Earlier sections describe earlier sprint states. The final real map has six eligible points (two team-reported B2 points plus four OSM-source points), never fictional markers. Source-only points are not upgraded to field verification.
+
+
+## Student-first update — 13 November 2026
+
+Owner specifies **06:45–20:00** for Homies B2 in the current prototype. Stored as `details.openingHours` with timezone Asia/Ho_Chi_Minh, scope prototype, and source `owner-prototype-hours`. This updates the earlier missing prototype-hour information; it does not fabricate group/staff schedules or institutional approvals. Survey date remains 11/11; the Homies record update is now 13/11, not a new survey. Real-time seats/current occupancy stay null.
+
+Explicit `utility: homies` membership is added only to B2, C3 and Đa năng; Đa năng's display name is clarified to Homies Đa năng from the owner's current request, still pending. No fourth study location/C1T is reclassified. All original coordinates, 11 candidates and prior source-only status are preserved.
+
+Booking inventory is a separate **three-seat fictional fixture** with some pre-held slots for demonstrating full state. It has no geographic coordinates and does not set any capacity/occupancy field on real records. Counts and booking IDs are local component state, never a VNU booking or live observation. Slot examples stay within 06:45–20:00, but are not a published official group schedule. Directions links only use confirmed real points and delegate routing/origin selection to an external map; a Homies point is not advertised as a verified entrance.
