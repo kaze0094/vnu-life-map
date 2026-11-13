@@ -66,3 +66,7 @@ Dùng project Vercel hiện có: Next.js, root `./`, Node 22.x, `npm ci`, `npm r
 Sau push, dùng Preview do Git integration tạo; kiểm commit/status Ready trước khi UAT. Nếu chưa có deployment mới, chủ project chọn **Deployments → Create Deployment → sprint-1-campus-map**, xác nhận **Preview**, không Promote/merge/Production. Kiểm incognito trên máy tính và mạng di động. Thay đổi public env cần rebuild. Không import project mới vì lần deploy đầu có thể bị phân loại Production.
 
 Tài liệu vận hành/nguồn/chi phí/khả thi và tiêu chí điểm: [ULIS B2 pilot plan](ulis-b2-pilot-plan.md). Ảnh, test, file thay đổi và giới hạn kỹ thuật: [QA Student-first](qa-student-final.md). Các handoff ngày 12/11 chỉ là lịch sử, không còn mô tả UI/giờ prototype hiện tại.
+
+### Kết quả Preview sau phát hành
+
+Đã xác nhận application commit `ed5872b` được Vercel báo Ready. [Mở Student-first Preview](https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app): HTTPS HTTP 200 không đăng nhập, homepage mới và hai route B2 có nội dung đúng; route sai trả 404; 8 JS assets Homies trả 200. Chưa có ký duyệt browser hosted vì Chromium cloud từ chối chứng chỉ; tiếp tục UAT trên mạng/thiết bị thật, không tắt TLS. Xem [bằng chứng QA](qa-student-final.md#hosted-verification-sau-push).

@@ -61,3 +61,21 @@ Một phép assert ban đầu của Playwright không nhận đúng `option disa
 - **Tile trong môi trường này lỗi TLS:** `net::ERR_CERT_AUTHORITY_INVALID`. Không disable TLS hay né hạn chế dịch vụ. Kiểm imagery trên mạng tin cậy/người dùng thực và giữ attribution.
 - **Preview:** kiểm đầu phiên 13/11 cho URL nhánh `https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app` trả HTTP 200 và B2 cũ, không còn SSO. Kiểm lại sau push để xác nhận UI mới; kết quả sẽ được ghi tiếp bên dưới. Không coi status build hoặc ảnh local là bằng chứng hosted browser đã qua.
 - Branded Chrome/Edge và điện thoại vật lý chưa ký duyệt ở đây. Đội thi cần chạy [UAT cuối](final-student-release.md#uat-cuối--desktop-và-mobile-390px) trên đúng URL/commit. Không có lỗi chức năng critical còn biết trong luồng local đã kiểm, nhưng không gán kết quả kiểm chứng thực địa/hosting khi chưa kiểm.
+
+## Hosted verification sau push
+
+Vercel báo **success/Ready** cho application commit `ed5872b` tại https://vercel.com/vnu-life-map/vnu-life-map/5Z7NaCKQ7oNscsMH1Ta9u5vg6CFS . Kiểm tra trực tiếp qua HTTPS có xác thực chứng chỉ bình thường tới https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app xác nhận:
+
+| Đường dẫn | Kết quả |
+| --- | --- |
+| `/` | 200, tiêu đề Student-first và utility grid mới hiện diện |
+| `/b2` | 200 |
+| `/locations/ULIS-HOMIES-B2` | 200, giờ 06:45 và lối vào booking-demo trong HTML |
+| `/parking/ULIS-PARKING-B2` | 200, unknown availability đúng nội dung |
+| `/parking/unknown` | 404 |
+| `/locations/unknown` | 404 |
+| 8 JavaScript assets được tham chiếu bởi trang Homies | Tất cả 200 |
+
+Các yêu cầu trên không dùng cookie, token hay đăng nhập Vercel và không bị redirect SSO. Bản Student-first mới đã hiện diện trên Preview; không còn chỉ kiểm B2 cũ. Đây là kiểm HTTP/rendered HTML/assets, **không phải** chứng minh browser booking/map đã chạy trên hosting.
+
+Đã thử mở URL hosted bằng Chromium, giữ TLS validation: browser trả `ERR_CERT_AUTHORITY_INVALID`. Vì vậy tương tác hosted và imagery thực vẫn cần đội kiểm trên browser/mạng tin cậy. Không dùng `ignoreHTTPSErrors`, chứng chỉ giả, proxy tile hoặc bypass protection. Local production interaction suite đã qua như phần trên. Các commit tài liệu sau đó không đổi mã ứng dụng; branch alias có thể được Vercel cập nhật tiếp.
