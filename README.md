@@ -2,7 +2,7 @@
 
 Vietnamese, mobile-first campus map focused on **Homies B2 – ULIS** and **Nhà xe B2 – ULIS**, based on team-reported survey observations from **11 November 2026**. Deadline: **15 November 2026**.
 
-Built with Next.js App Router, TypeScript, React, Tailwind CSS, React Leaflet/OpenStreetMap and local structured JSON. No backend, live parking integration or paid service is connected.
+Built with Next.js App Router, TypeScript, React, Tailwind CSS, React Leaflet/OpenStreetMap and local structured JSON. No live parking integration or paid service is connected. Study Together has a separate optional Cloudflare realtime server; no public endpoint is configured by default.
 
 ## Run and validate
 
@@ -23,7 +23,7 @@ npm run build
 npm start
 ```
 
-No credentials or environment variables are required. Optional **public, nonsecret build-time** tile URL/attribution settings are documented in `.env.example`. Review provider policy before use. No TLS bypass, tile proxy or automatic service failover exists. Map failures leave source-backed lists/details available.
+No credentials or environment variables are required for the map or private Chill Space. Optional **public, nonsecret build-time** tile URL/attribution settings are documented in `.env.example`. Review provider policy before use. No TLS bypass, tile proxy or automatic service failover exists. Map failures leave source-backed lists/details available.
 
 ## Routes
 
@@ -74,3 +74,13 @@ Homies prototype hours are **06:45–20:00**, supplied by the project owner on 1
 - [Vercel settings and first-deployment constraint](docs/deployment-vercel.md)
 
 The branch Preview returned HTTP 200 without login at the beginning of the 13/11 validation session; verify its latest commit after push before submission. Historical 11–12/11 QA/UI/SSO observations remain archived and do not describe this release. No Production deploy, merge, paid service or backend is authorized in this sprint.
+
+## VNU Chill Space — 13 November 2026
+
+The current homepage adds Chill Space to the existing 12 campus utilities (13 entries). `/chill`, `/chill/private` and `/chill/together` add a lazy-loaded procedural 3D room without rebuilding the campus application. Private focus progress/wishes stay on-device. Shared rooms use real Cloudflare Durable Object WebSockets, not localStorage or fake participants. Without a public endpoint Preview explicitly says **Chưa kết nối realtime**.
+
+- [Features, controls and competition script](docs/chill-space.md)
+- [Exact local and free-compatible public endpoint setup](docs/chill-realtime-setup.md)
+- [Actual multiplayer QA, limitations, screenshots and UAT](docs/qa-chill-space.md)
+
+`npm run typecheck` checks both Next and Worker. `npm run realtime:check` performs a local deployment dry-run only; `npm run test:realtime` and `npm run test:chill-browser` require the running local services described in setup. No public Worker was deployed, no account registered, no main merge or Production deployment performed. Earlier handoff documents describe the earlier map-only release.

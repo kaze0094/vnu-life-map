@@ -136,3 +136,7 @@ The B2 request authorizes preparing an accessible public **Preview**, not Produc
 At the start of this session the existing branch Preview https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app returned **HTTP 200**, with previous B2 content, to an unauthenticated request. The 12/11 SSO blocker is therefore historical for this URL at this check. Verify current behavior and commit after deploying the Student-first changes; do not assume every immutable deployment URL has the same protection scope.
 
 This release adds no route requiring a backend: booking DEMO is client-only and uses one page's memory. No env/storage/payment/student authentication setup is needed. Keep Next.js output/runtime defaults. Follow [current Preview steps/UAT](final-student-release.md) and [current QA](qa-student-final.md) rather than old four-marker or pre-booking checklists.
+
+## Chill Space / optional realtime — 13 November
+
+The existing Next.js deployment remains compatible with Vercel. The realtime server runs separately on Cloudflare Durable Objects; Vercel does not host a persistent WebSocket server. No new variable is required to test private Chill Space. Study Together defaults to **Chưa kết nối realtime** until `NEXT_PUBLIC_CHILL_REALTIME_URL` is set in Preview and the branch redeployed. Follow [the exact activation steps](chill-realtime-setup.md); keep the Worker Origin allowlist matched to the URL used by testers. Do not promote Production or merge PR #1. A public endpoint has not been deployed by this change.

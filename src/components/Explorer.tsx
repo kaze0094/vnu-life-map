@@ -2,7 +2,7 @@
 import {useState} from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import {Search,MapPin,BookOpen,ParkingCircle,Library,Presentation,Utensils,Coffee,BedDouble,Volleyball,Printer,HeartPulse,Landmark,Bus,Map,Rows3,ArrowUpRight} from 'lucide-react';
+import {Search,MapPin,BookOpen,ParkingCircle,Library,Presentation,Utensils,Coffee,BedDouble,Volleyball,Printer,HeartPulse,Landmark,Bus,Map,Rows3,ArrowUpRight,Sparkles} from 'lucide-react';
 import {filterUtilities,repository,mappable,detailHref} from '@/lib/data';
 import type {UtilityFilter} from '@/lib/data';
 import type {DataMode} from '@/lib/models';
@@ -20,7 +20,7 @@ export default function Explorer({parkingOnly=false}:{parkingOnly?:boolean}){
  function showList(){setView('list');requestAnimationFrame(()=>document.getElementById('location-list')?.focus());}
  return <div className="student-home">
   <section className="student-welcome"><div><h1>{parkingOnly?'Tìm chỗ gửi xe.':'Hôm nay bạn muốn đi đâu?'}</h1><p>Khám phá tiện ích trong khuôn viên ĐHQGHN</p></div><span className="campus-pill"><MapPin size={15}/>Xuân Thủy</span></section>
-  {!parkingOnly&&<section className="utility-grid" aria-label="Tiện ích khuôn viên">{utilities.map(({id,name,icon:Icon,active})=><button key={id} disabled={!active} aria-pressed={active?utility===id:undefined} className={`utility-card ${active?'available':'coming-soon'}`} onClick={()=>chooseUtility(id as UtilityFilter)}><Icon size={23}/><span>{name}</span><small>{active?'Khám phá':'Sắp ra mắt'}</small></button>)}</section>}
+  {!parkingOnly&&<section className="utility-grid" aria-label="Tiện ích khuôn viên"><Link href="/chill" prefetch={false} className="utility-card available chill-utility"><Sparkles size={23}/><span>Chill Space</span><small>Học & kết nối</small></Link>{utilities.map(({id,name,icon:Icon,active})=><button key={id} disabled={!active} aria-pressed={active?utility===id:undefined} className={`utility-card ${active?'available':'coming-soon'}`} onClick={()=>chooseUtility(id as UtilityFilter)}><Icon size={23}/><span>{name}</span><small>{active?'Khám phá':'Sắp ra mắt'}</small></button>)}</section>}
   <section className="student-explorer" aria-label="Bản đồ tiện ích">
    <div className="student-map-toolbar"><label className="student-search"><Search size={18}/><input aria-label="Tìm địa điểm" placeholder="Tìm Homies, nhà xe…" value={query} onChange={event=>setQuery(event.target.value)}/></label><div className="student-map-tabs"><button aria-pressed={view==='map'} onClick={()=>setView('map')} disabled={mode==='demo'}><Map size={16}/>Bản đồ</button><button aria-pressed={view==='list'} onClick={()=>setView('list')}><Rows3 size={16}/>Danh sách</button></div></div>
    {(utility!=='all'||query)&&<div className="student-filter-line"><span>{mode==='demo'?'Minh họa hư cấu':title} <small>· {items.length} địa điểm</small></span><button onClick={()=>{setQuery('');chooseUtility(parkingOnly?'parking':'all');}}> {utility==='all'&&!query?'Tất cả':'Xoá bộ lọc'}</button></div>}
