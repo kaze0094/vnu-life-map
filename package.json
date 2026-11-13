@@ -12,7 +12,8 @@
     "realtime:dev": "wrangler dev --config realtime/wrangler.jsonc --port 8787 --ip 127.0.0.1 --var ALLOWED_ORIGINS:http://localhost:3000,http://127.0.0.1:3000",
     "realtime:check": "wrangler deploy --dry-run --outdir work/worker-build --config realtime/wrangler.jsonc",
     "test:realtime": "node scripts/test-chill-realtime.mjs",
-    "test:chill-browser": "node scripts/test-chill-browser.mjs"
+    "test:chill-browser": "node scripts/test-chill-browser.mjs",
+    "test:diagnostics": "node --test scripts/test-cloudflare-diagnostics.mjs"
   },
   "dependencies": {
     "@react-three/fiber": "^9.8.2",

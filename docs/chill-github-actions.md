@@ -1,6 +1,6 @@
 # Kích hoạt multiplayer bằng Cloudflare + GitHub + Vercel
 
-Không cần VS Code, terminal cá nhân hoặc gửi token/Account ID cho Codex. Mã nằm trên nhánh **sprint-1-campus-map**, PR #1 vẫn mở. Workflow push có điều kiện đã chuẩn bị; **chưa kích hoạt job deploy**; chưa có endpoint công khai được xác nhận. Thiếu endpoint, Preview vẫn hiện **Chưa kết nối realtime**.
+Không cần VS Code, terminal cá nhân hoặc gửi token/Account ID cho Codex. Mã nằm trên nhánh **sprint-1-campus-map**, PR #1 vẫn mở. Workflow push có điều kiện đã được kích hoạt một lần ở commit8061e73 nhưng deploy thất bại10013; chưa có endpoint công khai được xác nhận. Xem [phân tích10013](cloudflare-error-10013.md) trước khi cho phép thử lại. Thiếu endpoint, Preview vẫn hiện **Chưa kết nối realtime**.
 
 ## 1. Kiểm tra tài khoản miễn phí và tạo API Token
 
@@ -24,7 +24,7 @@ Account API Tokens với cùng quyền/account scope cũng dùng được nếu 
 | `CLOUDFLARE_API_TOKEN` | Token vừa tạo |
 | `CLOUDFLARE_ACCOUNT_ID` | Account ID vừa sao chép |
 
-Không tạo chúng dưới **Variables**, không thêm vào Vercel và không đặt tiền tố `NEXT_PUBLIC_`. Workflow chỉ đưa chúng vào bước kiểm tra có giá trị và bước deploy; không in giá trị. GitHub chỉ cấp `contents: read`; không có quyền merge hoặc ghi repository.
+Không tạo chúng dưới **Variables**, không thêm vào Vercel và không đặt tiền tố `NEXT_PUBLIC_`. Workflow chỉ đưa chúng vào bước kiểm tra có giá trị, các probes chẩn đoán chỉ đọc và bước deploy; không in giá trị. GitHub chỉ cấp `contents: read`; không có quyền merge hoặc ghi repository.
 
 ## 3. Điều kiện triển khai — giữ nguyên nhánh mặc định main
 
@@ -78,12 +78,16 @@ Chỉ đánh dấu từng bài sau khi thực sự thử. Chụp ảnh hai màn 
 
 ## Xử lý lỗi bằng giao diện, không cần terminal
 
+**Lỗi10013 / unknown error:** xem [phân tích lần lỗi thực tế và các bước Dashboard](cloudflare-error-10013.md). Không mặc định token sai; không tăng quyền, đổi migration hoặc re-run khi chưa xác nhận.
+
+
 | Hiện tượng | Kiểm tra |
 | --- | --- |
 | Không có Run workflow | Bình thường: quy trình dùng push có marker, không dùng nút Run workflow |
 | Job deploy Skipped | Bình thường với push thường; khi đã xác nhận triển khai, kiểm tra marker nguyên văn ở HEAD và đúng nhánh sprint |
 | Không thấy lần chạy mới | Kiểm tra Actions được bật, đúng nhánh push và workflow đã được push; commit không dùng chỉ thị skip CI |
 | Missing secret / invalid account ID | Đúng tên repository secret, không dùng Variables/Zone ID; không dán giá trị vào log/chat |
+|10013 / unknown error | Kiểm tra Cloudflare Status, account/DO/subdomain và scope hiện có theo tài liệu chẩn đoán; không tự retry hoặc tăng quyền |
 | Cloudflare authentication/permission denied | Token chưa hết hạn, scope đúng account và Workers Scripts Edit; Account ID khớp. Không thêm quyền Admin/Global API Key để thử |
 | Cloudflare yêu cầu workers.dev subdomain | Cấu hình Your subdomain trong Dashboard, sau đó xác nhận kích hoạt lại theo bước4 |
 | Yêu cầu trả phí/legacy Durable Object | Dừng; giữ SQLite migration `new_sqlite_classes`, kiểm tra Workers Free. Không chọn nâng cấp |
@@ -95,4 +99,4 @@ Theo dõi **Workers & Pages → Metrics/Usage** và hạn mức [Workers](https:
 
 ## Phạm vi bảo mật và vận hành
 
-Token chỉ có trên GitHub Secrets và bước deploy. Origin allowlist bảo vệ trình duyệt, không phải cơ chế xác thực chống mọi client Internet. Phòng mời là link khó đoán, không danh tính xác thực; tránh đăng link riêng công khai. Tên/vị trí chỉ giữ trong phiên, lời ước và tiến độ riêng không gửi lên server. Không thu license plate, thông tin sinh viên, camera/micro; không có card/payment integration. Phiên chung có thể reset khi Worker khởi động lại; tối đa4 người là mức đã test local.
+Token chỉ có trên GitHub Secrets, bước kiểm tra/chẩn đoán và deploy; script chẩn đoán không in giá trị hoặc response thô. Origin allowlist bảo vệ trình duyệt, không phải cơ chế xác thực chống mọi client Internet. Phòng mời là link khó đoán, không danh tính xác thực; tránh đăng link riêng công khai. Tên/vị trí chỉ giữ trong phiên, lời ước và tiến độ riêng không gửi lên server. Không thu license plate, thông tin sinh viên, camera/micro; không có card/payment integration. Phiên chung có thể reset khi Worker khởi động lại; tối đa4 người là mức đã test local.

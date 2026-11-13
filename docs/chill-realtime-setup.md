@@ -1,6 +1,6 @@
 # Kích hoạt Study Together trên Preview
 
-Chưa có endpoint công khai được triển khai trong phiên làm việc này. Không cấu hình endpoint: UI ghi **Chưa kết nối realtime**, không dựng người online giả. My Chill Space vẫn dùng độc lập.
+Lần kích hoạt8061e73 thất bại với lỗi10013; chưa có endpoint công khai được xác nhận triển khai thành công. [Phân tích và kiểm tra Dashboard](cloudflare-error-10013.md). Không cấu hình endpoint: UI ghi **Chưa kết nối realtime**, không dựng người online giả. My Chill Space vẫn dùng độc lập.
 
 ## Local — không tài khoản cloud
 
@@ -23,11 +23,11 @@ Nếu Chromium đã cài: `CHILL_CHROMIUM_PATH=/usr/bin/chromium npm run test:ch
 
 ## Công khai — GitHub Actions, không cần terminal cá nhân
 
-Dùng [hướng dẫn Dashboard bằng tiếng Việt](chill-github-actions.md): tạo token Workers Scripts Edit giới hạn đúng account, lưu hai GitHub Actions Secrets, rồi xác nhận để Codex tạo/push một empty commit có marker nguyên văn `[deploy-chill-realtime]`. Workflow **Deploy Chill realtime (opt-in push)** chỉ deploy khi HEAD của push trên nhánh sprint có marker; push thường bỏ qua toàn bộ deploy job. Giữ nguyên default branch main, không dùng workflow_dispatch hoặc pull_request. Chưa tạo commit kích hoạt.
+Dùng [hướng dẫn Dashboard bằng tiếng Việt](chill-github-actions.md): tạo token Workers Scripts Edit giới hạn đúng account, lưu hai GitHub Actions Secrets, rồi xác nhận để Codex tạo/push một empty commit có marker nguyên văn `[deploy-chill-realtime]`. Workflow **Deploy Chill realtime (opt-in push)** chỉ deploy khi HEAD của push trên nhánh sprint có marker; push thường bỏ qua toàn bộ deploy job. Giữ nguyên default branch main, không dùng workflow_dispatch hoặc pull_request. Đã có một lần kích hoạt thất bại; không tạo commit kích hoạt mới nếu chưa có xác nhận triển khai lại.
 
 Cấu hình public đã giới hạn `ALLOWED_ORIGINS` đúng `https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app`. Script `npm run realtime:dev` chỉ override allowlist cho localhost trong môi trường local; không đưa localhost lên Worker public. Worker bật URL workers.dev, tắt version preview URLs. Không có token/Account ID trong mã nguồn.
 
-Sau deploy thủ công, đặt origin Worker vào `NEXT_PUBLIC_CHILL_REALTIME_URL` **chỉ Vercel Preview** và redeploy branch. Bước cloud chưa được thực hiện; không cần gửi bí mật cho trợ lý. URL http/ws loopback chỉ chấp nhận ở development, build production từ chối URL đó.
+Sau deploy thủ công, đặt origin Worker vào `NEXT_PUBLIC_CHILL_REALTIME_URL` **chỉ Vercel Preview** và redeploy branch. Bước cloud chưa thành công; không cần gửi bí mật cho trợ lý. URL http/ws loopback chỉ chấp nhận ở development, build production từ chối URL đó.
 
 ## Giới hạn và vận hành
 

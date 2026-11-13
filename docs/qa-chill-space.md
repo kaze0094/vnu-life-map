@@ -59,3 +59,11 @@ Token chỉ xuất hiện ở bước kiểm tra secrets và deploy; job gate kh
 Xem [hướng dẫn hiện hành](chill-github-actions.md) để xác nhận job deploy thật sự chạy và log Wrangler có URL/deployment thành công, sau đó health và A–G trên hai laptop. Workflow xanh nhưng deploy Skipped không phải đã triển khai.
 
 Xác nhận cho lần đổi trigger: `actionlint 1.7.12` PASS cả hai workflows, `git diff --check` PASS. Thực thi trực tiếp đoạn gate trích từ YAML bằng13 event fixtures local: push thường, marker đúng, marker ở body, sai case, thiếu ngoặc, marker chỉ ở commit cũ, SHA không khớp, main, nhánh khác, PR, fork, branch deletion và commit text chứa shell syntax đều xử lý đúng. Không có lệnh Cloudflare deploy nào được gọi trong các kiểm tra này. Các bước lint/typecheck/tests/build/dry-run vẫn nằm trong job deploy và chỉ chạy sau gate được chấp nhận; mã ứng dụng/Worker không thay đổi trong lần đổi trigger.
+
+## Cloudflare10013 investigation
+
+Reviewed actual failed run43452879686/commit8061e73. Its validation/dry-run passed; the error was on Workers script API write. Total Upload is bundle size, not evidence of an accepted upload. Cloudflare reported Workers API availability/5xx deployment problems near the failure; account-specific cause remains unconfirmed. Binding/export/SQLite-v1 migration and compatibility date match. No blind permission, plan, migration or SDK changes. [Evidence, limits and Dashboard checklist](cloudflare-error-10013.md).
+
+Added GET-only diagnostics with strict output allowlisting, no raw response/errors, no credentials on public status, no redirects/retries, and mocked tests. Workflow diagnostics run only within an explicitly authorized future marked deploy. Preparation commit has no marker; no account probes, retry or deployment authorized/executed in this investigation.
+
+Validation after diagnostic changes: lint PASS; Next/Worker typecheck PASS; Vitest55/55 PASS; diagnostic Node tests4/4 PASS (GET-only, redaction, account-token fallback, network/HTML failures, missing secrets); production build PASS; Worker dry-run PASS at19.98KiB; actionlint PASS both workflows; diff whitespace check PASS. No cloud writes or actual secret-bearing account probes were run.
