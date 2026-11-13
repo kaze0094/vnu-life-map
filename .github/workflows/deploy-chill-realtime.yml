@@ -1,14 +1,10 @@
-name: Deploy Chill realtime (manual)
+name: Deploy Chill realtime (opt-in push)
 
-# No push, pull_request, schedule or workflow_run deployment trigger.
+# Branch pushes only. The gate checks the literal marker in HEAD, not other commits.
 on:
-  workflow_dispatch:
-    inputs:
-      confirm_deploy:
-        description: 'Deploy the public Chill Worker from sprint-1-campus-map (free-plan account only)'
-        required: true
-        type: boolean
-        default: false
+  push:
+    branches:
+      - sprint-1-campus-map
 
 permissions:
   contents: read
@@ -18,12 +14,46 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  gate:
     if: >-
-      github.event_name == 'workflow_dispatch' &&
+      github.event_name == 'push' &&
       github.repository == 'kaze0094/vnu-life-map' &&
       github.ref == 'refs/heads/sprint-1-campus-map' &&
-      inputs.confirm_deploy == true
+      github.event.deleted == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      should_deploy: ${{ steps.marker.outputs.should_deploy }}
+    steps:
+      # GitHub contains() is case-insensitive, so check the exact literal in Node.
+      # Read untrusted commit text from the event file, never interpolate it into shell.
+      - name: Check exact HEAD commit marker (no checkout or secrets)
+        id: marker
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+          const head = event.head_commit;
+          const allowed = process.env.GITHUB_EVENT_NAME === 'push'
+            && process.env.GITHUB_REPOSITORY === 'kaze0094/vnu-life-map'
+            && process.env.GITHUB_REF === 'refs/heads/sprint-1-campus-map'
+            && event.deleted === false
+            && head?.id === process.env.GITHUB_SHA
+            && typeof head?.message === 'string'
+            && head.message.includes('[deploy-chill-realtime]');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `should_deploy=${allowed}\n`);
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, allowed
+            ? 'Exact HEAD marker accepted; deployment checks may proceed.\n'
+            : 'Worker deployment skipped: no exact marker in the pushed HEAD commit. No Cloudflare secrets or deployment steps were used.\n');
+          NODE
+
+  deploy:
+    needs: gate
+    if: >-
+      github.event_name == 'push' &&
+      github.repository == 'kaze0094/vnu-life-map' &&
+      github.ref == 'refs/heads/sprint-1-campus-map' &&
+      needs.gate.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:

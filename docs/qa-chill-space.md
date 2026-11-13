@@ -50,13 +50,12 @@ Các ảnh Study Together dùng hai kết nối thật tới server local, khôn
 
 Kiểm thử tương tác map/tile trên thiết bị thật và endpoint cloud sau cấu hình vẫn là UAT chưa hoàn thành; các kết quả local không được dùng để đánh dấu những mục đó đã đạt.
 
-## Bổ sung: chuẩn bị deploy Worker bằng GitHub Actions — 13 November 2026
+## Bổ sung: deploy Worker bằng push có điều kiện
 
-- Review Worker: allowlist exact-origin, hash token server-side, seat authority/heartbeat cleanup vẫn giữ nguyên; không sửa logic realtime hoặc dữ liệu campus.
-- `.github/workflows/deploy-chill-realtime.yml`: chỉ `workflow_dispatch`, checkbox xác nhận mặc định tắt, khóa repository/branch, `contents: read`, checkout đúng SHA, action references pin SHA, token chỉ trong bước kiểm tra secrets và deploy. Không có push/PR deploy, merge, Vercel deploy hoặc nâng cấp gói.
-- `actionlint 1.7.12`: PASS cho cả workflow Validate hiện có và workflow mới (binary official release, checksum verified).
-- `npm run lint`, `npm run typecheck`, `npm test` (55/55), `npm run build`: PASS sau sửa cấu hình.
-- `npm run realtime:check`: PASS dry-run, SQLite DO binding/migration và origin Preview đúng; không gọi deploy cloud.
-- Actual local workerd với cấu hình public: exact Preview Origin upgrade101; localhost và origin khác403; health200. Script local dev override vẫn chạy10 smoke checks WebSocket thật PASS (4 người, giới hạn người5, ghế, clock, rate limit, cleanup, resume, close/expiry, origin).
-- **Chưa chạy workflow/deploy cloud**, chưa xác thực token hoặc account của chủ dự án; chưa đổi default branch. GitHub API xác nhận default branch hiện là `main`, trong khi workflow mới chỉ nằm trên nhánh sprint. Đây là prerequisite còn chặn dispatch; [hướng dẫn](chill-github-actions.md) giải thích phương án owner chủ động đổi default branch tạm, với Vercel Production Branch giữ `main`, hoặc dừng nếu không cho phép.
-- Sau owner deploy phải chạy lại A–G trên hai laptop/endpoint công khai; kết quả local không thay thế bước này.
+Thay thế quy trình workflow_dispatch trước đây; không còn bước đổi nhánh mặc định hoặc đưa workflow vào main. Workflow chỉ nhận push nhánh sprint; gate kiểm tra literal marker trong HEAD, phân biệt chữ hoa/thường. Push thường bỏ qua toàn bộ job deploy. Main, nhánh khác và pull_request không triển khai.
+
+Token chỉ xuất hiện ở bước kiểm tra secrets và deploy; job gate không dùng secrets/checkout. Giữ `contents: read`, SHA-pinned actions, lint/types/tests/build/dry-run trước deploy. Chưa tạo/push commit kích hoạt, chưa deploy Worker, không đổi default branch/main hoặc Vercel Production. Sau owner thêm Secrets và xác nhận, một empty marker commit mới được phép kích hoạt. Re-run có thể deploy lại, không tuyên bố exactly-once.
+
+Xem [hướng dẫn hiện hành](chill-github-actions.md) để xác nhận job deploy thật sự chạy và log Wrangler có URL/deployment thành công, sau đó health và A–G trên hai laptop. Workflow xanh nhưng deploy Skipped không phải đã triển khai.
+
+Xác nhận cho lần đổi trigger: `actionlint 1.7.12` PASS cả hai workflows, `git diff --check` PASS. Thực thi trực tiếp đoạn gate trích từ YAML bằng13 event fixtures local: push thường, marker đúng, marker ở body, sai case, thiếu ngoặc, marker chỉ ở commit cũ, SHA không khớp, main, nhánh khác, PR, fork, branch deletion và commit text chứa shell syntax đều xử lý đúng. Không có lệnh Cloudflare deploy nào được gọi trong các kiểm tra này. Các bước lint/typecheck/tests/build/dry-run vẫn nằm trong job deploy và chỉ chạy sau gate được chấp nhận; mã ứng dụng/Worker không thay đổi trong lần đổi trigger.

@@ -1,6 +1,6 @@
 # Kích hoạt multiplayer bằng Cloudflare + GitHub + Vercel
 
-Không cần VS Code, terminal cá nhân hoặc gửi token/Account ID cho Codex. Mã nằm trên nhánh **sprint-1-campus-map**, PR #1 vẫn mở. Workflow đã chuẩn bị nhưng **chưa được chạy**; chưa có endpoint công khai được xác nhận. Thiếu endpoint, Preview vẫn hiện **Chưa kết nối realtime**.
+Không cần VS Code, terminal cá nhân hoặc gửi token/Account ID cho Codex. Mã nằm trên nhánh **sprint-1-campus-map**, PR #1 vẫn mở. Workflow push có điều kiện đã chuẩn bị; **chưa kích hoạt job deploy**; chưa có endpoint công khai được xác nhận. Thiếu endpoint, Preview vẫn hiện **Chưa kết nối realtime**.
 
 ## 1. Kiểm tra tài khoản miễn phí và tạo API Token
 
@@ -26,31 +26,27 @@ Account API Tokens với cùng quyền/account scope cũng dùng được nếu 
 
 Không tạo chúng dưới **Variables**, không thêm vào Vercel và không đặt tiền tố `NEXT_PUBLIC_`. Workflow chỉ đưa chúng vào bước kiểm tra có giá trị và bước deploy; không in giá trị. GitHub chỉ cấp `contents: read`; không có quyền merge hoặc ghi repository.
 
-## 3. Điểm chặn của GitHub: workflow phải có trên nhánh mặc định
+## 3. Điều kiện triển khai — giữ nguyên nhánh mặc định main
 
-Repository hiện có nhánh mặc định **main**. Workflow mới chỉ có trên **sprint-1-campus-map**. Theo [quy tắc GitHub](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow), `workflow_dispatch` phải có trên nhánh mặc định trước khi chạy thủ công. Chọn branch trên trang Code, mở link file workflow hoặc gọi API không bỏ qua được yêu cầu này. Khi chưa xử lý, nút **Run workflow** có thể không xuất hiện.
+Workflow **Deploy Chill realtime (opt-in push)** chỉ nhận sự kiện **push** trên `sprint-1-campus-map`. Không cần nút Run workflow, không dùng `workflow_dispatch`, không đổi default branch và không đưa workflow vào main.
 
-Codex **không** sửa main, đổi nhánh mặc định hoặc chạy workflow. Không có quy trình bấm Run hoàn chỉnh nếu đồng thời cấm cả đưa workflow vào nhánh mặc định và đổi nhánh mặc định.
+Một job `gate` rất nhỏ đọc file event của GitHub, không checkout mã, không lấy secrets. Job `deploy` chỉ được bắt đầu khi **HEAD commit của push** chứa nguyên văn marker **`[deploy-chill-realtime]`** trong subject hoặc body. Marker phân biệt chữ hoa/thường: `[DEPLOY-CHILL-REALTIME]`, thiếu ngoặc, khác dấu hoặc chỉ nằm trong commit trước HEAD đều không đạt. Không nội suy commit message vào shell.
 
-**Phương án không merge, do chủ repository chủ động quyết định:** tạm đặt `sprint-1-campus-map` làm nhánh mặc định. Thao tác này cần quyền admin và ảnh hưởng nhánh mặc định cho PR mới; không đổi base `main` của PR #1 đang tồn tại.
+Push thông thường: `gate` chạy để xác nhận, còn **toàn bộ job deploy hiển thị Skipped** — không kiểm tra secrets, không cài dependencies, không chạy Wrangler. Push main/nhánh khác và pull_request không kích hoạt workflow này. Workflow Validate hiện có vẫn kiểm tra CI riêng; Vercel có thể tự build **Preview** từ push như trước.
 
-1. Trước tiên vào Vercel project → **Settings → Environments → Production → Branch Tracking** (giao diện cũ: **Settings → Git → Production Branch**), xác nhận/đặt **Production Branch = main** một cách rõ ràng. Nếu không xác nhận được, **dừng**, không đổi default branch. Đổi default branch không phải quyền cho phép deploy Vercel Production. Không push commit mới trong khoảng đổi tạm; kiểm tra deployment target vẫn là Preview.
-2. GitHub repository → **Settings → General → Default branch** → nút đổi → chọn `sprint-1-campus-map` và xác nhận. Đây là thay đổi thiết lập do bạn quyết định, không phải merge. Không đổi branch/base PR #1.
-3. Làm bước4 ngay bên dưới. Khi workflow đã hoàn thành, đổi **Default branch** về **main** tại cùng trang. Vercel Production Branch vẫn giữ **main**. Lần deploy Worker tiếp theo cần lặp bước đổi tạm nếu workflow vẫn chưa nằm trên main.
+## 4. Kích hoạt một lần sau khi bạn xác nhận
 
-Nếu không muốn/không được phép đổi default branch, hãy **dừng tại đây**: workflow và secrets đã sẵn sàng, nhưng cần quyết định riêng về việc đăng ký workflow trên default branch. Không merge PR #1 chỉ để làm xuất hiện nút Run.
+1. Hoàn tất hai GitHub repository Secrets ở bước2, kiểm tra Cloudflare account đang dùng Free và có workers.dev subdomain. Trong repository → **Actions**, bảo đảm Actions được bật theo chính sách repository.
+2. Gửi Codex: **“Tôi đã thêm hai Cloudflare Secrets. Tôi xác nhận triển khai Worker. Hãy tạo và push đúng một commit rỗng có marker [deploy-chill-realtime] trên sprint-1-campus-map.”** Không gửi giá trị secrets. Trước xác nhận này, Codex chỉ commit workflow/tài liệu với message bình thường, không tạo marker commit.
+3. Sau khi được yêu cầu, Codex sẽ tạo một empty commit và push nhánh sprint. Push đó là thao tác kích hoạt; bạn không cần VS Code/terminal hoặc đổi default branch. Không bật Cloudflare Workers Builds tự deploy theo Git.
+4. GitHub → **Actions → Deploy Chill realtime (opt-in push)** → chọn lần chạy có đúng SHA của empty commit vừa tạo và event **push**. Nếu sidebar chưa hiện tên workflow, mở tab Actions danh sách **All workflows** của push mới. Không cần nút Run workflow.
+5. Xác nhận `gate` xanh và `deploy` **chạy**, không Skipped. Trong `deploy`, kiểm tra các bước secrets, lint, typecheck, tests, production build và Worker dry-run đều xanh, sau đó **Deploy Cloudflare Worker** xanh. **Chỉ thấy workflow xanh chưa đủ:** push thường cũng có thể xanh với deploy bị bỏ qua.
+6. Mở log **Deploy Cloudflare Worker**, tìm URL `https://vnu-chill-realtime.<subdomain-cua-ban>.workers.dev` và version/deployment ID Wrangler báo thành công. Có thể kiểm tra thêm Cloudflare → **Workers & Pages → vnu-chill-realtime → Deployments** đối chiếu lần deploy mới. URL cũng có ở **Settings → Domains & Routes**. Không lấy link Dashboard hoặc URL version/preview Worker.
+7. Mở origin Worker thêm `/health` trong trình duyệt. Thành công: JSON có `service: "VNU Chill realtime"`, `protocol: 1`. Trang gốc `/` trả404 là bình thường. Health thành công chưa chứng minh multiplayer: tiếp tục bước5–6 bên dưới.
 
-## 4. Chạy workflow thủ công trên GitHub
+Mỗi push HEAD có marker có thể tạo một lần deploy; **Re-run jobs/force-push lại HEAD có marker cũng có thể deploy lại**. Đây không phải cơ chế exactly-once bền vững. Để kích hoạt một lần theo yêu cầu, chỉ tạo/push một empty commit và không re-run. Nếu thất bại, đọc log trước, xử lý nguyên nhân và xin xác nhận trước khi kích hoạt lại. Commit mới không có marker sau đó sẽ bỏ qua deploy, kể cả lịch sử chứa marker.
 
-1. Repository → **Actions**, bật Actions nếu đang bị tắt theo chính sách repository. Chọn **Deploy Chill realtime (manual)** ([file workflow](../.github/workflows/deploy-chill-realtime.yml)). Không dùng Cloudflare Workers Builds kết nối Git tự deploy: deployment này chỉ do GitHub Actions thủ công.
-2. **Run workflow → Use workflow from: sprint-1-campus-map**.
-3. Đọc mô tả rồi tích `confirm_deploy`, bấm **Run workflow**. Checkbox mặc định tắt. Chọn sai branch hoặc không xác nhận sẽ bỏ qua job; không triển khai.
-4. Mở lần chạy vừa tạo. Các bước lint/typecheck/tests/build/dry-run phải xanh trước **Deploy Cloudflare Worker**. Workflow dùng Wrangler đã khóa trong package-lock, không cài bản latest tự do. Nó chỉ deploy Worker; không có lệnh deploy Vercel, merge hay nâng cấp gói.
-5. Trong log **Deploy Cloudflare Worker**, sao chép URL dạng `https://vnu-chill-realtime.<subdomain-cua-ban>.workers.dev`. Cũng có thể lấy ở Cloudflare → **Workers & Pages → vnu-chill-realtime → Settings → Domains & Routes**. Không sao chép link Dashboard hoặc URL version/preview Worker. Worker config bật `workers_dev`, tắt version preview URL.
-6. Mở URL đó thêm `/health` trong trình duyệt. Thành công sẽ hiện JSON có `service: "VNU Chill realtime"` và `protocol: 1`. Trang gốc `/` có thể trả404; đó không phải lỗi deploy. Health thành công chưa chứng minh WebSocket hoạt động; phải làm bước6.
-7. Nếu đã đổi default branch, đổi về **main** sau khi job hoàn thành như bước3.
-
-Workflow **chỉ có `workflow_dispatch`**, không deploy khi push, PR hoặc chạy Validate CI. Những lần push vẫn có thể kích hoạt **Vercel Preview** qua tích hợp có sẵn; đó không phải deploy Worker hoặc Vercel Production.
+Không sửa Vercel Production Branch, default branch hoặc base PR #1. Workflow không merge, không deploy Vercel và không nâng cấp Cloudflare. Worker công khai vẫn chưa được kích hoạt ở lần chuẩn bị này.
 
 ## 5. Nối Vercel Preview với Worker
 
@@ -62,7 +58,7 @@ Workflow **chỉ có `workflow_dispatch`**, không deploy khi push, PR hoặc ch
 
    **https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app/chill/together**
 
-`ALLOWED_ORIGINS` đã cấu hình chính xác alias này (không path/trailing slash), không có wildcard hoặc localhost trong cấu hình public. Đừng dùng URL deployment bất biến khác khi thử: origin khác sẽ bị403. Nếu cần alias khác trong tương lai, sửa allowlist bằng commit và tự chạy lại workflow. Không bỏ kiểm tra TLS hoặc mở origin `*` để chữa lỗi.
+`ALLOWED_ORIGINS` đã cấu hình chính xác alias này (không path/trailing slash), không có wildcard hoặc localhost trong cấu hình public. Đừng dùng URL deployment bất biến khác khi thử: origin khác sẽ bị403. Nếu cần alias khác trong tương lai, sửa allowlist bằng commit thường, rồi xác nhận một đợt kích hoạt mới bằng marker. Không bỏ kiểm tra TLS hoặc mở origin `*` để chữa lỗi.
 
 Nếu có màn hình đăng nhập Vercel/Cloudflare Access, kiểm tra protection của **Preview/Worker này** theo quyền và chính sách nhóm trước khi cho công chúng thử; không tắt bảo vệ của Vercel Production. Trong khi chưa nối được, UI phải ghi chưa kết nối/đang kết nối lại, không có avatar online giả.
 
@@ -84,11 +80,12 @@ Chỉ đánh dấu từng bài sau khi thực sự thử. Chụp ảnh hai màn 
 
 | Hiện tượng | Kiểm tra |
 | --- | --- |
-| Không có Run workflow | Quy tắc default branch ở bước3; workflow đang bị disable; quyền ghi repository |
-| Job skipped | Đúng branch và đã tích confirm_deploy chưa? |
+| Không có Run workflow | Bình thường: quy trình dùng push có marker, không dùng nút Run workflow |
+| Job deploy Skipped | Bình thường với push thường; khi đã xác nhận triển khai, kiểm tra marker nguyên văn ở HEAD và đúng nhánh sprint |
+| Không thấy lần chạy mới | Kiểm tra Actions được bật, đúng nhánh push và workflow đã được push; commit không dùng chỉ thị skip CI |
 | Missing secret / invalid account ID | Đúng tên repository secret, không dùng Variables/Zone ID; không dán giá trị vào log/chat |
 | Cloudflare authentication/permission denied | Token chưa hết hạn, scope đúng account và Workers Scripts Edit; Account ID khớp. Không thêm quyền Admin/Global API Key để thử |
-| Cloudflare yêu cầu workers.dev subdomain | Cấu hình Your subdomain trong Dashboard, sau đó tự chạy lại workflow |
+| Cloudflare yêu cầu workers.dev subdomain | Cấu hình Your subdomain trong Dashboard, sau đó xác nhận kích hoạt lại theo bước4 |
 | Yêu cầu trả phí/legacy Durable Object | Dừng; giữ SQLite migration `new_sqlite_classes`, kiểm tra Workers Free. Không chọn nâng cấp |
 | Health200 nhưng không kết nối phòng | Đúng Preview alias/allowlist, Worker không có Access login/challenge, không dùng URL có `/health`; thử mạng khác và trình duyệt chuẩn |
 | Chưa kết nối realtime | Biến đúng tên, scope Preview và branch, redeploy sau Save; mở deployment mới |

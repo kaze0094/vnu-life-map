@@ -23,7 +23,7 @@ Nếu Chromium đã cài: `CHILL_CHROMIUM_PATH=/usr/bin/chromium npm run test:ch
 
 ## Công khai — GitHub Actions, không cần terminal cá nhân
 
-Dùng [hướng dẫn Dashboard bằng tiếng Việt](chill-github-actions.md): tạo token Workers Scripts Edit giới hạn đúng account, lưu hai GitHub Actions Secrets, xử lý yêu cầu default branch của GitHub, rồi tự kích hoạt **Deploy Chill realtime (manual)**. Workflow không chạy khi push/PR và chưa được kích hoạt bởi Codex.
+Dùng [hướng dẫn Dashboard bằng tiếng Việt](chill-github-actions.md): tạo token Workers Scripts Edit giới hạn đúng account, lưu hai GitHub Actions Secrets, rồi xác nhận để Codex tạo/push một empty commit có marker nguyên văn `[deploy-chill-realtime]`. Workflow **Deploy Chill realtime (opt-in push)** chỉ deploy khi HEAD của push trên nhánh sprint có marker; push thường bỏ qua toàn bộ deploy job. Giữ nguyên default branch main, không dùng workflow_dispatch hoặc pull_request. Chưa tạo commit kích hoạt.
 
 Cấu hình public đã giới hạn `ALLOWED_ORIGINS` đúng `https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app`. Script `npm run realtime:dev` chỉ override allowlist cho localhost trong môi trường local; không đưa localhost lên Worker public. Worker bật URL workers.dev, tắt version preview URLs. Không có token/Account ID trong mã nguồn.
 
