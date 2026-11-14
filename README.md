@@ -95,3 +95,7 @@ Keep the default branch as `main`; no workflow registration on main is needed fo
 ### Cloudflare10013 investigation
 
 [Read the incident analysis and Dashboard steps](docs/cloudflare-error-10013.md) before retrying. Configuration/class export/SQLite migration match; the failed run coincided closely with a reported Workers API incident. Workers Scripts Edit remains the required account-scoped permission; no extra permissions or plan upgrade is justified by10013 alone. The deployment job now has sanitized, GET-only preflight and post-failure diagnostics without automatic retries. `npm run test:diagnostics` checks request restrictions and secret redaction with mocks. Public account probes and a new deployment have not been run by Codex.
+
+### Astryx UI/UX tooling
+
+Repository-local [Astryx skill and usage](docs/astryx-ui-tooling.md) is installed for future UI work. CLI/core0.7.16 are pinned development dependencies (Node22.13+); `npm run astryx -- search 'mobile navigation'` reads the design reference. UI initialization/theme integration has not been applied, so the existing campus/Chill screens remain unchanged.
