@@ -1,0 +1,92 @@
+{
+  "retrievedAt": "2026-11-11",
+  "url": "https://www.openstreetmap.org/api/0.6/map?bbox=105.781,21.036,105.784,21.041",
+  "license": "OpenStreetMap contributors, ODbL 1.0",
+  "elements": [
+    {
+      "type": "node",
+      "id": "11609443061",
+      "visible": "true",
+      "version": "2",
+      "changeset": "169845929",
+      "timestamp": "2025-08-02T05:56:27Z",
+      "lat": "21.0382738",
+      "lon": "105.7824572",
+      "tags": {
+        "amenity": "university",
+        "education": "university",
+        "name": "Đại học Công nghệ",
+        "name:en": "University of Engineering and Technology",
+        "operator": "Trường Đại học Quốc gia Hà Nội",
+        "website": "https://uet.vnu.edu.vn/",
+        "wikidata": "Q10829028",
+        "wikipedia": "vi:Trường Đại học Công nghệ, Đại học Quốc gia Hà Nội"
+      }
+    },
+    {
+      "type": "node",
+      "id": "11609443059",
+      "visible": "true",
+      "version": "2",
+      "changeset": "169845929",
+      "timestamp": "2025-08-02T05:56:27Z",
+      "lat": "21.0379689",
+      "lon": "105.7828716",
+      "tags": {
+        "amenity": "university",
+        "education": "university",
+        "name": "Đại học Kinh tế",
+        "name:en": "University of Economics and Business",
+        "operator": "Trường Đại học Quốc gia Hà Nội",
+        "website": "https://ueb.edu.vn/",
+        "wikidata": "Q5146680",
+        "wikipedia": "vi:Trường Đại học Kinh tế, Đại học Quốc gia Hà Nội"
+      }
+    },
+    {
+      "type": "node",
+      "id": "11609590538",
+      "visible": "true",
+      "version": "4",
+      "changeset": "172435770",
+      "timestamp": "2025-09-25T11:36:54Z",
+      "lat": "21.0403110",
+      "lon": "105.7816961",
+      "tags": {
+        "addr:city": "Phường Dịch Vọng Hậu",
+        "addr:district": "Quận Cầu Giấy",
+        "addr:housenumber": "Y1",
+        "addr:province": "Hà Nội",
+        "addr:street": "144 Xuân Thuỷ",
+        "amenity": "university",
+        "education": "university",
+        "internet_access": "yes",
+        "internet_access:fee": "no",
+        "name": "Trường Đại học Y Dược",
+        "operator": "Đại học Quốc gia Hà Nội",
+        "operator:type": "university",
+        "website": "https://ump.vnu.edu.vn/",
+        "wikidata": "Q105335883",
+        "wikipedia": "vi:Trường Đại học Y Dược, Đại học Quốc gia Hà Nội"
+      }
+    },
+    {
+      "type": "node",
+      "id": "12573506643",
+      "visible": "true",
+      "version": "2",
+      "changeset": "169845929",
+      "timestamp": "2025-08-02T05:56:27Z",
+      "lat": "21.0382596",
+      "lon": "105.7826979",
+      "tags": {
+        "addr:housenumber": "E3",
+        "addr:street": "144 Xuân Thủy",
+        "amenity": "university",
+        "education": "university",
+        "name": "Tòa E3 - Đại học Công Nghệ"
+      }
+    }
+  ],
+  "privacyNote": "Contributor account identifiers removed; geographic/source/version evidence retained. Attribution: OpenStreetMap contributors."
+}

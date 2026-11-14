@@ -1,0 +1,136 @@
+[
+  {
+    "id": "XT-L01",
+    "campusId": "xuan-thuy",
+    "name": "Đại học Công nghệ",
+    "category": "facility",
+    "description": "Điểm đại diện cơ sở theo OpenStreetMap. Không xác nhận giờ mở cửa, quyền tiếp cận hoặc hoạt động hiện tại.",
+    "coordinates": {
+      "lat": 21.0382738,
+      "lng": 105.7824572
+    },
+    "verification": {
+      "status": "source_verified",
+      "verifiedAt": "2026-11-11T00:00:00Z",
+      "method": "public_source",
+      "reviewer": "Codex · đối chiếu OSM API"
+    },
+    "sourceId": "osm-11609443061",
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "mode": "real",
+    "operationalStatus": null
+  },
+  {
+    "id": "XT-L02",
+    "campusId": "xuan-thuy",
+    "name": "Đại học Kinh tế",
+    "category": "facility",
+    "description": "Điểm đại diện cơ sở theo OpenStreetMap. Không xác nhận giờ mở cửa, quyền tiếp cận hoặc hoạt động hiện tại.",
+    "coordinates": {
+      "lat": 21.0379689,
+      "lng": 105.7828716
+    },
+    "verification": {
+      "status": "source_verified",
+      "verifiedAt": "2026-11-11T00:00:00Z",
+      "method": "public_source",
+      "reviewer": "Codex · đối chiếu OSM API"
+    },
+    "sourceId": "osm-11609443059",
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "mode": "real",
+    "operationalStatus": null
+  },
+  {
+    "id": "XT-L03",
+    "campusId": "xuan-thuy",
+    "name": "Trường Đại học Y Dược",
+    "category": "facility",
+    "description": "Điểm đại diện cơ sở theo OpenStreetMap. Không xác nhận giờ mở cửa, quyền tiếp cận hoặc hoạt động hiện tại.",
+    "coordinates": {
+      "lat": 21.040311,
+      "lng": 105.7816961
+    },
+    "verification": {
+      "status": "source_verified",
+      "verifiedAt": "2026-11-11T00:00:00Z",
+      "method": "public_source",
+      "reviewer": "Codex · đối chiếu OSM API"
+    },
+    "sourceId": "osm-11609590538",
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "mode": "real",
+    "operationalStatus": null
+  },
+  {
+    "id": "XT-L04",
+    "campusId": "xuan-thuy",
+    "name": "Tòa E3 - Đại học Công Nghệ",
+    "category": "facility",
+    "description": "Điểm đại diện cơ sở theo OpenStreetMap. Không xác nhận giờ mở cửa, quyền tiếp cận hoặc hoạt động hiện tại.",
+    "coordinates": {
+      "lat": 21.0382596,
+      "lng": 105.7826979
+    },
+    "verification": {
+      "status": "source_verified",
+      "verifiedAt": "2026-11-11T00:00:00Z",
+      "method": "public_source",
+      "reviewer": "Codex · đối chiếu OSM API"
+    },
+    "sourceId": "osm-12573506643",
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "mode": "real",
+    "operationalStatus": null
+  },
+  {
+    "id": "XT-L05",
+    "campusId": "xuan-thuy",
+    "name": "C1T",
+    "category": "study",
+    "description": "Thư viện C1T theo OSM; cần xác minh vị trí điểm và điều kiện sử dụng trước khi đặt ghim.",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "sourceId": "osm-library",
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "mode": "real",
+    "operationalStatus": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-12",
+    "sourceId": "b2-release-scope",
+    "mode": "real",
+    "operationalStatus": null,
+    "id": "ULIS-HOMIES-C3",
+    "name": "Homies C3 – ULIS",
+    "category": "study",
+    "description": "Chờ xác minh thực địa. Chưa xác nhận tọa độ, lịch hoạt động, điều kiện tiếp cận hoặc tiện ích.",
+    "coordinates": null,
+    "utility": "homies"
+  },
+  {
+    "campusId": "xuan-thuy",
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-12",
+    "sourceId": "b2-release-scope",
+    "mode": "real",
+    "operationalStatus": null,
+    "id": "ULIS-DA-NANG",
+    "name": "Homies Đa năng – ULIS",
+    "category": "study",
+    "description": "Chờ xác minh thực địa. Chưa xác nhận tọa độ, lịch hoạt động, điều kiện tiếp cận hoặc tiện ích.",
+    "coordinates": null,
+    "utility": "homies"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "vnu-chill-realtime",
+  "main": "worker.ts",
+  "compatibility_date": "2026-11-01",
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "STUDY_ROOMS",
+        "class_name": "ChillRoom"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": [
+        "ChillRoom"
+      ]
+    }
+  ],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://vnu-life-map-git-sprint-1-campus-map-vnu-life-map.vercel.app"
+  },
+  "observability": {
+    "enabled": false
+  },
+  "workers_dev": true,
+  "preview_urls": false
+}

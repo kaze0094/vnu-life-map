@@ -1,0 +1,211 @@
+[
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P01",
+    "name": "Điểm gửi xe cần xác minh 01",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P02",
+    "name": "Điểm gửi xe cần xác minh 02",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P03",
+    "name": "Điểm gửi xe cần xác minh 03",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P04",
+    "name": "Điểm gửi xe cần xác minh 04",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P05",
+    "name": "Điểm gửi xe cần xác minh 05",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P06",
+    "name": "Điểm gửi xe cần xác minh 06",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P07",
+    "name": "Điểm gửi xe cần xác minh 07",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P08",
+    "name": "Điểm gửi xe cần xác minh 08",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P09",
+    "name": "Điểm gửi xe cần xác minh 09",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P10",
+    "name": "Điểm gửi xe cần xác minh 10",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "user-brief",
+    "mode": "real",
+    "category": "parking",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "XT-P11",
+    "name": "Điểm gửi xe cần xác minh 11",
+    "description": "Ứng viên từ 11 ghim trong ảnh được mô tả. Chưa xác định tên, lối vào hoặc vị trí.",
+    "entranceCoordinates": null
+  }
+]

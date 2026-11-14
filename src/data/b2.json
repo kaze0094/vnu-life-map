@@ -1,0 +1,109 @@
+[
+  {
+    "campusId": "xuan-thuy",
+    "verification": {
+      "status": "field_verified",
+      "verifiedAt": "2026-11-11",
+      "method": "field_survey",
+      "reviewer": "Nhóm dự án · theo báo cáo khảo sát"
+    },
+    "updatedAt": "2026-11-13",
+    "sourceId": "b2-field-report",
+    "mode": "real",
+    "operationalStatus": null,
+    "id": "ULIS-HOMIES-B2",
+    "name": "Homies B2 – ULIS",
+    "category": "study",
+    "description": "Không gian học tập miễn phí theo báo cáo khảo sát của nhóm. Cần thẻ sinh viên ULIS và được cán bộ giám sát kiểm tra.",
+    "coordinates": {
+      "lat": 21.037472,
+      "lng": 105.782583
+    },
+    "coordinateRole": "survey_point",
+    "details": {
+      "kind": "homies",
+      "observedAt": "2026-11-11",
+      "reportedAt": "2026-11-12",
+      "seatingObserved": 98,
+      "officialMaximumCapacity": null,
+      "feeVnd": 0,
+      "access": "Thẻ sinh viên ULIS được cán bộ giám sát kiểm tra. Không mặc định được vào cả ngày.",
+      "schedule": {
+        "validity": "pending_confirmation",
+        "sourceId": "b2-schedule",
+        "staff": [],
+        "students": [],
+        "approvedGroups": []
+      },
+      "amenities": {
+        "Wi-Fi": null,
+        "Ổ cắm điện": null,
+        "Điều hòa": null,
+        "Nhà vệ sinh": null,
+        "Tiếp cận cho người khuyết tật": null
+      },
+      "openingHours": {
+        "opens": "06:45",
+        "closes": "20:00",
+        "timezone": "Asia/Ho_Chi_Minh",
+        "scope": "prototype",
+        "sourceId": "owner-prototype-hours"
+      },
+      "realTimeOccupancy": null,
+      "availableSeats": null
+    },
+    "utility": "homies"
+  },
+  {
+    "campusId": "xuan-thuy",
+    "verification": {
+      "status": "field_verified",
+      "verifiedAt": "2026-11-11",
+      "method": "field_survey",
+      "reviewer": "Nhóm dự án · theo báo cáo khảo sát"
+    },
+    "updatedAt": "2026-11-12",
+    "sourceId": "b2-field-report",
+    "mode": "real",
+    "operationalStatus": null,
+    "id": "ULIS-PARKING-B2",
+    "name": "Nhà xe B2 – ULIS",
+    "category": "parking",
+    "description": "Cổng vào và ra chung theo báo cáo khảo sát. Khoảng 480 xe máy là sức chứa vận hành ước tính, không phải số chỗ đang trống.",
+    "coordinates": {
+      "lat": 21.037722,
+      "lng": 105.782389
+    },
+    "coordinateRole": "shared_gate",
+    "entranceCoordinates": {
+      "lat": 21.037722,
+      "lng": 105.782389
+    },
+    "capacity": null,
+    "occupancy": null,
+    "details": {
+      "kind": "parking",
+      "observedAt": "2026-11-11",
+      "reportedAt": "2026-11-12",
+      "operationalCapacityApprox": 480,
+      "historicalCapacityApprox": 400,
+      "historicalSourceId": "b2-exam-guide",
+      "reportedDifferenceApprox": 80,
+      "differenceExplanation": "Chênh lệch khoảng 80 xe được nhóm báo cáo là do cách sắp xếp và kích thước phương tiện.",
+      "observedMotorcycles": {
+        "min": 480,
+        "max": 500,
+        "approximate": true
+      },
+      "observedStatus": "Đầy / cực kỳ đông tại thời điểm khảo sát",
+      "feePerEntryVnd": 5000,
+      "gateShared": true,
+      "entryProcess": "Nhận thẻ gửi xe khi vào.",
+      "exitProcess": "Trả lại thẻ gửi xe khi ra.",
+      "cameraProcess": "Theo báo cáo khảo sát, camera ghi nhận biển số tại trạm quét thẻ. Website không thu thập hoặc hiển thị ảnh biển số.",
+      "systemAvailableCount": null,
+      "realTimeOccupancy": null,
+      "provider": null
+    }
+  }
+]
