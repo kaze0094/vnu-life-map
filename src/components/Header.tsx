@@ -1,3 +1,20 @@
 import Link from 'next/link';
-import { MapPinned, ArrowUpRight } from 'lucide-react';
-export default function Header(){return <header className="header"><Link href="/" className="brand"><span className="brand-icon"><MapPinned size={23}/></span><span>VNU <b>LIFE MAP</b><small>KHÔNG GIAN CHO ĐỜI SỐNG SINH VIÊN</small></span></Link><nav aria-label="Điều hướng chính"><Link href="/b2">Khám phá B2</Link><Link href="/parking">Gửi xe <ArrowUpRight size={14}/></Link></nav><span className="sprint">B2 <span>•</span> BẢN THỬ NGHIỆM CUỘC THI</span></header>}
+import {MapPinned, Sparkles, ParkingCircle, ArrowUpRight} from 'lucide-react';
+import {HStack} from '@astryxdesign/core/HStack';
+import {VStack} from '@astryxdesign/core/VStack';
+import {Text} from '@astryxdesign/core/Text';
+
+export default function Header() {
+  return <header className="header">
+    <Link href="/" className="brand">
+      <HStack className="brand-icon"><MapPinned aria-hidden="true" size={23}/></HStack>
+      <VStack gap={0.5}><Text type="inherit">VNU <b>LIFE MAP</b></Text><Text type="supporting" className="brand-tagline">Học tập · Khám phá · Kết nối</Text></VStack>
+    </Link>
+    <nav aria-label="Điều hướng chính">
+      <Link href="/b2"><MapPinned aria-hidden="true" size={17}/>Khám phá B2</Link>
+      <Link href="/chill" prefetch={false}><Sparkles aria-hidden="true" size={17}/>Chill Space</Link>
+      <Link href="/parking"><ParkingCircle aria-hidden="true" size={17}/>Gửi xe <ArrowUpRight aria-hidden="true" size={13}/></Link>
+    </nav>
+    <Text type="supporting" className="preview-note">Bản thử nghiệm sinh viên</Text>
+  </header>;
+}

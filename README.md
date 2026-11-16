@@ -6,7 +6,7 @@ Built with Next.js App Router, TypeScript, React, Tailwind CSS, React Leaflet/Op
 
 ## Run and validate
 
-Node.js 20.9+ (hosting/CI target: 22.x) and npm:
+Node.js22.13+ (hosting/CI target:22.x) and npm:
 
 ```sh
 npm ci
@@ -99,3 +99,9 @@ Keep the default branch as `main`; no workflow registration on main is needed fo
 ### Astryx UI/UX tooling
 
 Repository-local [Astryx skill and usage](docs/astryx-ui-tooling.md) is installed for future UI work. CLI/core0.7.16 are pinned development dependencies (Node22.13+); `npm run astryx -- search 'mobile navigation'` reads the design reference. UI initialization/theme integration has not been applied, so the existing campus/Chill screens remain unchanged.
+
+## Astryx UI/UX refresh —16 November2026
+
+The existing app now uses Astryx components and a compiled Life theme extending Matcha, with system fonts and no remote font dependency. Mobile navigation, search/filter/list controls, source indicators, avatar inputs and Chill room panels are clearer and keyboard accessible. All13 utilities remain:3 active entries plus10 upcoming entries in an expandable section. B2 evidence, coordinates, unknown values, demo isolation and the authoritative multiplayer protocol are preserved.
+
+[Current UI decisions, screenshots, QA and remaining UAT](docs/ui-astryx-qa.md). Rebuild theme changes with `npm run theme:build`; run `npm run test:ui` against a local app for390px/desktop axe and interaction checks. This supersedes the earlier tooling-only setup note; no Worker or Vercel Production deployment is part of this refresh.

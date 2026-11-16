@@ -5,3 +5,109 @@
 @media(prefers-reduced-motion:reduce){.chill-mode-cards>a{transition:none}.chill-mode-cards>a:hover{transform:none}}
 .chill-table-callout{position:absolute;z-index:10;top:126px;left:50%;transform:translateX(-50%);border:1px solid #c7d7c0;background:#fff9eced;color:#6a8464;border-radius:9px;padding:12px 20px;min-height:44px;font-size:12px}
 @media(max-width:640px){.chill-play:has(.chill-settings) .chill-focus-panel{display:none}.chill-table-callout{top:112px;font-size:11px}.chill-joystick{bottom:95px}.chill-profile label{font-size:12px}}
+
+/* Matcha semantic surfaces; the 3D world and networking stay independent. */
+.chill-welcome,.chill-lobby {background: var(--paper);color: var(--navy);font-family: inherit;}
+.chill-back {font-size: .8125rem;min-height: 2.75rem;color: var(--teal);}
+.chill-welcome-nav {display: flex;align-items: center;justify-content: space-between;padding: .75rem 5%;border-bottom: thin solid var(--line);}
+.chill-welcome-nav .chill-back {padding: .5rem 0;}
+.chill-welcome-nav .astryx-text {font-size: .75rem;color: var(--muted);}
+.chill-welcome-grid {display: grid;grid-template-columns: minmax(0,1fr) minmax(0,1.15fr);gap: 1.5rem 3.5rem;padding: 3rem 5%;max-width: 84rem;align-items: start;}
+.chill-intro {grid-column: 1;grid-row: 1;}
+.chill-kicker {align-items: center;color: var(--teal);font-size: .75rem;letter-spacing: .12em;}
+.chill-kicker .astryx-text {font-size: .75rem;color: inherit;}
+.chill-welcome h1 {font-size: clamp(2.25rem,4vw,3.875rem);line-height: 1.16;letter-spacing: -.04em;margin: 0;color: var(--navy);}
+.chill-welcome h1 em {color: var(--teal);font-style: normal;}
+.chill-welcome .chill-tagline {font-size: 1.125rem;color: var(--navy);}
+.chill-intro p {margin: 0;font-size: .9375rem;line-height: 1.8;color: var(--muted);max-width: 29rem;}
+.chill-preview-wrap {grid-column: 2;grid-row: 1 / span 3;align-self: center;min-width: 0;}
+.chill-preview-scene {height: 33rem;border-radius: 2rem;border: thin solid var(--line);background: var(--life-accent-soft);box-shadow: var(--life-shadow);display: block;}
+.chill-scene-caption {display: flex;gap: .5rem;justify-content: center;align-items: center;font-size: .8125rem;color: var(--muted);text-align: center;}
+.chill-choose {grid-column: 1;grid-row: 2;}
+.chill-mode-cards {margin: 0;}
+.chill-mode-cards>a {padding: 1.25rem;border-radius: 1rem;background: var(--life-surface);border-color: var(--line);gap: 1rem;color: var(--teal);}
+.chill-mode-cards>a:hover {border-color: var(--teal);background: var(--life-accent-soft);}
+.chill-mode-icon {justify-content: center;align-items: center;width: 3rem;height: 3rem;border-radius: .875rem;background: var(--life-accent-soft);flex: 0 0 auto;}
+.chill-mode-cards .chill-mode-copy {flex: 1;min-width: 0;}
+.chill-mode-cards h2 {font-size: 1.0625rem;line-height: 1.5;letter-spacing: -.01em;margin: 0;color: var(--navy);}
+.chill-mode-cards .astryx-text {font-size: .75rem;line-height: 1.6;color: var(--muted);}
+.chill-tour {grid-column: 1;grid-row: 3;margin: 0;padding-top: 1.25rem;border-color: var(--line);}
+.chill-tour h2 {font-size: .875rem;color: var(--navy);margin: 0 0 .5rem;}
+.chill-tour ol {padding-inline-start: 1.25rem;margin: .5rem 0;font-size: .8125rem;line-height: 1.9;color: var(--muted);}
+.chill-tour button {font-size: .8125rem;min-height: 2.75rem;color: var(--teal);}
+.chill-welcome-footer {background: transparent;border-color: var(--line);padding: 1.5rem 5%;text-align: center;}
+.chill-welcome-footer>.astryx-stack {justify-content: center;}
+.chill-welcome-footer .astryx-text {font-size: .75rem;display: inline-flex;gap: .5rem;align-items: center;line-height: 1.8;color: var(--muted);}
+.chill-welcome-footer p {margin: .5rem 0 0;}
+.chill-lobby {padding-bottom: 1.5rem;}
+.chill-lobby-card {max-width: 34rem;background: var(--life-surface);border-color: var(--line);border-radius: 1.5rem;padding: 2rem;box-shadow: var(--life-shadow);}
+.chill-lobby-card h1 {font-size: 2rem;line-height: 1.25;color: var(--navy);letter-spacing: -.035em;}
+.chill-lobby-card>p,.chill-lobby-card>small {font-size: .875rem;line-height: 1.8;color: var(--muted);}
+.chill-profile {gap: .875rem;margin-block: 1.75rem;}
+.chill-profile legend {font-size: .9375rem;margin-bottom: 1rem;color: var(--navy);}
+.chill-profile label {font-size: .8125rem;gap: .5rem;color: var(--navy);}
+.chill-profile input,.chill-profile select,.chill-lobby-card details input {font-size: 1rem;min-height: 3rem;color: var(--navy);border: thin solid var(--color-border-emphasized);background: var(--life-surface);border-radius: .75rem;padding: .75rem;}
+.chill-profile .astryx-text {font-size: .75rem;line-height: 1.75;color: var(--muted);}
+.chill-profile-options {display: grid;grid-template-columns: 1fr 1fr;gap: .875rem;}
+.chill-swatches {display: flex;flex-wrap: wrap;gap: .75rem;}
+.chill-swatches button {display: grid;place-items: center;width: 2.75rem;height: 2.75rem;border-width: .1875rem;flex: 0 0 auto;}
+.chill-swatches button[aria-pressed="true"] {border-color: var(--life-surface);outline-color: var(--teal);}
+.chill-swatches button svg {background: var(--life-surface);color: var(--navy);border-radius: 50%;}
+.chill-primary {background: var(--color-accent);border-color: var(--color-accent);color: var(--color-on-accent);font-size: .875rem;min-height: 3rem;border-radius: .75rem;}
+.chill-lobby-links button,.chill-lobby-card details button {font-size: .875rem;min-height: 3rem;background: var(--life-accent-soft);border-color: var(--line);color: var(--teal);}
+.chill-lobby-links a {font-size: .875rem;color: var(--teal);min-height: 2.75rem;padding: .5rem;}
+.chill-lobby-card details,.chill-lobby-card summary {font-size: .875rem;color: var(--navy);}
+.chill-lobby-card summary {min-height: 2.75rem;}
+.chill-connection {font-size: .8125rem;line-height: 1.65;color: var(--color-on-warning-muted);background: var(--color-warning-muted);border-color: var(--color-border-warning);}
+.chill-connection.is-connected {color: var(--color-on-success-muted);background: var(--color-success-muted);border-color: var(--color-border-success);}
+.chill-room-name {font-size: .875rem!important;color: var(--navy)!important;}
+.chill-game-header {background: var(--life-surface);border-color: var(--line);color: var(--navy);}
+.chill-game-header small {font-size: .75rem;color: var(--muted);}
+.chill-game-header button,.chill-game-header>a {min-height: 2.75rem;min-width: 2.75rem;font-size: .8125rem;}
+.chill-focus-panel,.chill-settings,.chill-wish,.chill-offline-card {background: var(--life-surface);border-color: var(--line);color: var(--navy);box-shadow: var(--life-shadow);}
+.chill-focus-panel>span,.chill-focus-panel>p,.chill-settings small,.chill-focus-panel small,.participant-panel small,.chill-settings label,.chill-offline-card p {font-size: .8125rem;line-height: 1.7;color: var(--muted);}
+.chill-focus-actions button,.chill-focus-panel>button,.chill-settings button,.chill-seat-buttons button,.chill-wish button,.chill-offline-card button {min-height: 2.75rem;font-size: .8125rem;}
+.chill-settings input,.chill-settings select,.chill-wish textarea {font-size: 1rem;}
+.chill-settings h2,.chill-wish h2 {color: var(--navy);font-size: 1rem;}
+.chill-settings {max-height: calc(100dvh - 12rem);overflow-y: auto;overscroll-behavior: contain;}
+.chill-toast {color: var(--navy);background: var(--life-surface);border-color: var(--line);font-size: .8125rem;line-height: 1.6;}
+.chill-hint {color: var(--navy);font-size: .6875rem;background: var(--life-surface);border-radius: .375rem;padding: .25rem .5rem;}
+.chill-emotes button {min-height: 2.75rem;min-width: 2.75rem;background: var(--life-surface);border-color: var(--line);}
+.chill-offline-card a {display: inline-flex;align-items: center;min-height: 2.75rem;color: var(--teal);font-size: .875rem;}
+@media(max-width: 50rem) {
+  .chill-welcome-grid {grid-template-columns: minmax(0,1fr);gap: 1.5rem;padding: 1.75rem 1rem 2rem;}
+  .chill-intro {grid-row: 1;}.chill-preview-wrap {grid-column: 1;grid-row: 2;}.chill-choose {grid-row: 3;}.chill-tour {grid-row: 4;}
+  .chill-preview-scene {height: 19rem;border-radius: 1.5rem;}.chill-welcome h1 {font-size: 2.5rem;}
+  .chill-welcome-nav {padding: .5rem 1rem;}.chill-welcome-nav>.astryx-text {font-size: .6875rem;}
+}
+@media(max-width: 40rem) {
+  .chill-lobby-card {margin: .5rem 1rem 1.5rem;padding: 1.5rem 1.25rem;border-radius: 1.25rem;}
+  .chill-lobby-card h1 {font-size: 1.8125rem;}.chill-lobby .chill-back {padding: 1rem;}
+  .chill-preview-scene {height: 16.5rem;}.chill-welcome h1 {font-size: 2.25rem;}
+  .chill-mode-cards>a {padding: 1.125rem 1rem;gap: .75rem;}.chill-mode-cards h2 {font-size: 1rem;}
+  .chill-mode-cards .astryx-text {font-size: .75rem;}.chill-mode-icon {width: 2.5rem;height: 2.5rem;}
+  .chill-welcome-footer .astryx-text {font-size: .75rem;}
+  .chill-settings {max-height: calc(100dvh - 12rem);}
+  .chill-game-header>div {min-width: 0;}.chill-game-header strong {font-size: .8125rem;}.chill-game-header small {font-size: .6875rem;}
+  .chill-game-header {gap: .375rem;padding: .625rem;}.chill-game-header button {padding: .5rem;}
+  .chill-focus-panel {max-width: calc(100vw - 2rem);}
+  .chill-connection.floating {max-width: calc(100vw - 2rem);font-size: .75rem;}
+  .chill-toast {font-size: .75rem;}
+}
+.chill-mode-cards>a>.chill-mode-icon {flex: 0 0 auto;}
+.chill-swatches {gap: .5rem;}
+.chill-settings .chill-panel-close {float: right;min-width: 2.75rem;padding: .5rem;}
+.chill-settings h2 {padding-top: .625rem;}
+.chill-quick-actions button,.chill-preset button,.chill-preset summary {min-height: 2.75rem;min-width: 2.75rem;}
+.chill-preset button,.chill-preset summary,.chill-quick-actions button {font-size: .8125rem;}
+.chill-joystick small {font-size: .75rem;color: var(--navy);}
+@media(max-width: 40rem) {.chill-hint {display: none;}}
+.chill-game-header button,.chill-game-header>a,.chill-quick-actions button {color: var(--navy);background: var(--life-surface);border-color: var(--line);}
+.chill-preset button,.chill-preset summary {color: var(--navy);background: var(--life-surface);}
+.chill-preset button[aria-pressed="true"] {color: var(--teal);background: var(--life-accent-soft);border-color: var(--teal);}
+.chill-settings button,.chill-settings>a,.chill-focus-actions button:not(.chill-primary),.chill-wish button {color: var(--navy);background: var(--life-accent-soft);border-color: var(--line);}
+.chill-settings>a {font-size: .8125rem;min-height: 2.75rem;padding: .625rem;}
+.chill-wish p,.chill-wish small {font-size: .8125rem;color: var(--muted);line-height: 1.75;}
+.chill-profile input,.chill-profile select,.chill-lobby-card details input {border-color: var(--muted);}
+.chill-profile-options {grid-template-columns: repeat(2,minmax(0,1fr));}
+.chill-loading,.chill-gl-fallback {background: var(--paper);color: var(--navy);font-size: .875rem;line-height: 1.8;}
