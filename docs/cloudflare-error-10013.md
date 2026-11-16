@@ -1,3 +1,5 @@
+> Cập nhật16/11: sự cố đã resolved; lần kích hoạt19bfe14 triển khai Worker thành công. Xem [báo cáo hiện hành](realtime-public-release.md). Phân tích thời điểm lỗi dưới đây được giữ làm lịch sử; không tự rerun.
+
 # Cloudflare deploy lỗi10013 — phân tích và thao tác an toàn
 
 ## Kết quả kiểm tra

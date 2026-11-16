@@ -105,3 +105,7 @@ Repository-local [Astryx skill and usage](docs/astryx-ui-tooling.md) is installe
 The existing app now uses Astryx components and a compiled Life theme extending Matcha, with system fonts and no remote font dependency. Mobile navigation, search/filter/list controls, source indicators, avatar inputs and Chill room panels are clearer and keyboard accessible. All13 utilities remain:3 active entries plus10 upcoming entries in an expandable section. B2 evidence, coordinates, unknown values, demo isolation and the authoritative multiplayer protocol are preserved.
 
 [Current UI decisions, screenshots, QA and remaining UAT](docs/ui-astryx-qa.md). Rebuild theme changes with `npm run theme:build`; run `npm run test:ui` against a local app for390px/desktop axe and interaction checks. This supersedes the earlier tooling-only setup note; no Worker or Vercel Production deployment is part of this refresh.
+
+## Public Worker activation —16 November2026
+
+Worker deployment19bfe14 succeeded once through GitHub Actions. Public origin: https://vnu-chill-realtime.kaze08298.workers.dev; health200 and two-peer public WebSocket protocol checks PASS. Vercel Preview env/redeploy and two-browser public UI validation remain unconfirmed; do not claim the student-facing multiplayer is ready yet. [Deployment evidence, exact remaining Vercel steps and QA limits](docs/realtime-public-release.md). No new marker commit is needed to set Preview env.

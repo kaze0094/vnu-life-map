@@ -1,6 +1,6 @@
 # Kích hoạt multiplayer bằng Cloudflare + GitHub + Vercel
 
-Không cần VS Code, terminal cá nhân hoặc gửi token/Account ID cho Codex. Mã nằm trên nhánh **sprint-1-campus-map**, PR #1 vẫn mở. Workflow push có điều kiện đã được kích hoạt một lần ở commit8061e73 nhưng deploy thất bại10013; chưa có endpoint công khai được xác nhận. Xem [phân tích10013](cloudflare-error-10013.md) trước khi cho phép thử lại. Thiếu endpoint, Preview vẫn hiện **Chưa kết nối realtime**.
+Không cần VS Code, terminal cá nhân hoặc gửi token/Account ID cho Codex. Mã nằm trên nhánh **sprint-1-campus-map**, PR #1 vẫn mở. Worker đã deploy thành công ở commit19bfe14, [run43855985790](https://github.com/kaze0094/vnu-life-map/actions/runs/43855985790). Xem [báo cáo public activation](realtime-public-release.md) trước khi làm bước Vercel. Không tạo thêm marker chỉ để nối Preview. Thiếu endpoint, Preview vẫn hiện **Chưa kết nối realtime**.
 
 ## 1. Kiểm tra tài khoản miễn phí và tạo API Token
 
@@ -46,7 +46,7 @@ Push thông thường: `gate` chạy để xác nhận, còn **toàn bộ job de
 
 Mỗi push HEAD có marker có thể tạo một lần deploy; **Re-run jobs/force-push lại HEAD có marker cũng có thể deploy lại**. Đây không phải cơ chế exactly-once bền vững. Để kích hoạt một lần theo yêu cầu, chỉ tạo/push một empty commit và không re-run. Nếu thất bại, đọc log trước, xử lý nguyên nhân và xin xác nhận trước khi kích hoạt lại. Commit mới không có marker sau đó sẽ bỏ qua deploy, kể cả lịch sử chứa marker.
 
-Không sửa Vercel Production Branch, default branch hoặc base PR #1. Workflow không merge, không deploy Vercel và không nâng cấp Cloudflare. Worker công khai vẫn chưa được kích hoạt ở lần chuẩn bị này.
+Không sửa Vercel Production Branch, default branch hoặc base PR #1. Workflow không merge, không deploy Vercel và không nâng cấp Cloudflare. Worker công khai đã được kích hoạt; không lặp bước4 khi chỉ cần cấu hình env Preview.
 
 ## 5. Nối Vercel Preview với Worker
 
