@@ -1,0 +1,114 @@
+[
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "demo",
+    "mode": "demo",
+    "category": "parking",
+    "capacity": 100,
+    "occupancy": 35,
+    "operationalStatus": null,
+    "id": "DEMO-01",
+    "name": "Bãi xe minh họa",
+    "description": "Bản ghi giả lập để thử tìm kiếm và bộ lọc. Không phải địa điểm thực tế.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "demo",
+    "mode": "demo",
+    "category": "study",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "DEMO-02",
+    "name": "Góc tự học minh họa",
+    "description": "Bản ghi giả lập để thử tìm kiếm và bộ lọc. Không phải địa điểm thực tế."
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "demo",
+    "mode": "demo",
+    "category": "facility",
+    "capacity": null,
+    "occupancy": null,
+    "operationalStatus": null,
+    "id": "DEMO-03",
+    "name": "Tiện ích minh họa",
+    "description": "Bản ghi giả lập để thử tìm kiếm và bộ lọc. Không phải địa điểm thực tế."
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "demo",
+    "mode": "demo",
+    "category": "parking",
+    "capacity": 10,
+    "occupancy": 10,
+    "operationalStatus": null,
+    "id": "SIM-P01",
+    "name": "Bãi Sao Hỏa (hư cấu)",
+    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "demo",
+    "mode": "demo",
+    "category": "parking",
+    "capacity": 10,
+    "occupancy": 8,
+    "operationalStatus": null,
+    "id": "SIM-P02",
+    "name": "Bãi Mây Tím (hư cấu)",
+    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU.",
+    "entranceCoordinates": null
+  },
+  {
+    "campusId": "xuan-thuy",
+    "coordinates": null,
+    "verification": {
+      "status": "pending_verification",
+      "verifiedAt": null
+    },
+    "updatedAt": "2026-11-11T00:00:00Z",
+    "sourceId": "demo",
+    "mode": "demo",
+    "category": "parking",
+    "capacity": 20,
+    "occupancy": 4,
+    "operationalStatus": null,
+    "id": "SIM-P03",
+    "name": "Bãi Cầu Vồng (hư cấu)",
+    "description": "Bãi xe hoàn toàn hư cấu. Sức chứa chỉ phục vụ mô phỏng, không liên quan cơ sở VNU.",
+    "entranceCoordinates": null
+  }
+]

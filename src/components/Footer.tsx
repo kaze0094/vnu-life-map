@@ -1,0 +1,1 @@
+export default function Footer(){return <footer><strong>VNU LIFE MAP<span> / </span></strong><p>Dành cho những ngày ở khuôn viên.</p><small>Không có kết nối thời gian thực với hệ thống thẻ gửi xe.</small></footer>}

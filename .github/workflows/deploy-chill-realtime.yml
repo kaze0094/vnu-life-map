@@ -1,0 +1,129 @@
+name: Deploy Chill realtime (opt-in push)
+
+# Branch pushes only. The gate checks the literal marker in HEAD, not other commits.
+on:
+  push:
+    branches:
+      - sprint-1-campus-map
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-vnu-chill-realtime
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    if: >-
+      github.event_name == 'push' &&
+      github.repository == 'kaze0094/vnu-life-map' &&
+      github.ref == 'refs/heads/sprint-1-campus-map' &&
+      github.event.deleted == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      should_deploy: ${{ steps.marker.outputs.should_deploy }}
+    steps:
+      # GitHub contains() is case-insensitive, so check the exact literal in Node.
+      # Read untrusted commit text from the event file, never interpolate it into shell.
+      - name: Check exact HEAD commit marker (no checkout or secrets)
+        id: marker
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const event = JSON.parse(fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8'));
+          const head = event.head_commit;
+          const allowed = process.env.GITHUB_EVENT_NAME === 'push'
+            && process.env.GITHUB_REPOSITORY === 'kaze0094/vnu-life-map'
+            && process.env.GITHUB_REF === 'refs/heads/sprint-1-campus-map'
+            && event.deleted === false
+            && head?.id === process.env.GITHUB_SHA
+            && typeof head?.message === 'string'
+            && head.message.includes('[deploy-chill-realtime]');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `should_deploy=${allowed}\n`);
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, allowed
+            ? 'Exact HEAD marker accepted; deployment checks may proceed.\n'
+            : 'Worker deployment skipped: no exact marker in the pushed HEAD commit. No Cloudflare secrets or deployment steps were used.\n');
+          NODE
+
+  deploy:
+    needs: gate
+    if: >-
+      github.event_name == 'push' &&
+      github.repository == 'kaze0094/vnu-life-map' &&
+      github.ref == 'refs/heads/sprint-1-campus-map' &&
+      needs.gate.outputs.should_deploy == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CI: 'true'
+      WRANGLER_SEND_METRICS: 'false'
+      WRANGLER_LOG_SANITIZE: 'true'
+    steps:
+      - name: Checkout the selected commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Check required secrets without displaying values
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo '::error::Add the repository secret CLOUDFLARE_API_TOKEN.'
+            exit 1
+          fi
+          if ! [[ "$CLOUDFLARE_ACCOUNT_ID" =~ ^[a-fA-F0-9]{32}$ ]]; then
+            echo '::error::Add CLOUDFLARE_ACCOUNT_ID as a 32-character account ID, not a Zone ID.'
+            exit 1
+          fi
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck Next.js and Worker
+        run: npm run typecheck
+      - name: Unit tests
+        run: npm test
+      - name: Test diagnostic redaction and read-only requests
+        run: npm run test:diagnostics
+      - name: Production build validation only (no Vercel deployment)
+        run: npm run build
+      - name: Validate Worker bundle and configuration without deploying
+        run: npm run realtime:check
+      - name: Read-only Cloudflare preflight (sanitized)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/cloudflare-diagnostics.mjs
+      - name: Deploy Cloudflare Worker
+        id: cloudflare_deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --no-install wrangler deploy --config realtime/wrangler.jsonc
+      - name: Read-only diagnostics after a failed deploy (no retry)
+        if: ${{ failure() && steps.cloudflare_deploy.outcome == 'failure' }}
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: node scripts/cloudflare-diagnostics.mjs
+      - name: Next steps
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'SUMMARY'
+          ## Worker deployment completed
+          Find the public `https://vnu-chill-realtime.<subdomain>.workers.dev` URL in the **Deploy Cloudflare Worker** log, or in Cloudflare → Workers & Pages → vnu-chill-realtime → Settings → Domains & Routes.
+
+          Open `<Worker URL>/health`. Then set `NEXT_PUBLIC_CHILL_REALTIME_URL` to the Worker origin in **Vercel Preview only**, and redeploy `sprint-1-campus-map`.
+
+          Instructions: [Vietnamese dashboard-only guide](https://github.com/kaze0094/vnu-life-map/blob/sprint-1-campus-map/docs/chill-github-actions.md).
+
+          This workflow does not merge branches, change billing plans, deploy Vercel, or enable real parking/card integrations.
+          SUMMARY
